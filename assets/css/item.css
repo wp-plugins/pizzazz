@@ -1,0 +1,8 @@
+th#order {width: 120px;}
+td.column-order input {width: 35px;}
+th#thumbnail {width: 180px;}
+td.column-thumbnail img {width: 100%;}
+
+#orderdiv {display: none;}
+
+#wpbody .survey-link {border: 1px solid #2EA2CC; box-shadow: none;}

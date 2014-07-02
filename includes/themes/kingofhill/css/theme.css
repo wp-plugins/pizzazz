@@ -1,0 +1,60 @@
+#pizzazz {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#pizzazz a {
+    border: none;
+}
+
+.pi-container {
+    clear: both;
+    margin: 8px auto;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+#pi-main-pane{
+    overflow: auto;
+    width: 100%
+}
+
+.pi-focus {
+    padding-bottom: 15px;
+}
+
+.pi-focus img {
+    display: block;
+}
+
+img.pi-thumb {
+    float: left;
+    margin: 0 5px 5px 0;
+}
+
+.pi-hide {
+    display: none;
+}
+
+div.pi-focus, div.pi-meta {
+    display: block;
+    float: left;
+}
+
+div.pi-focus {
+    width: 60%;
+}
+
+div.pi-meta {
+    width: 40%;
+}
+
+div.pi-meta p {
+    margin-bottom: 0;
+}
+
+div.pi-clearFix {
+
+}
