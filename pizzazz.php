@@ -3,9 +3,9 @@
 Plugin Name: Pizzazz
 Plugin URI: http://www.bluebridgedev.com/download/pizzazz.zip
 Description: An attractive and simple portfolio.
-Version: 1.0.0
+Version: 1.0.1
 Author: Blue Bridge Development
-Author URI: http://www.bluebridgedev.com/download/pizzazz.zip
+Author URI: http://www.bluebridgedev.com/
 License: GPLv2 or later
 */
 
@@ -104,6 +104,7 @@ class Pizzazz {
     }
 
     public function orderByColumn($vars) {
+        if ( !$vars || !isset( $vars['post_type' ] ) ) return $vars;
         $item = new Item();
         return $item->orderListRows($vars);
     }

@@ -84,7 +84,7 @@ class Item {
     }
 
     public function orderListRows($vars) {
-        if($vars['post_type'] !== $this->postType || (isset($vars['orderby']) && $vars['orderby'] !== 'order')) return $vars;
+        if( $vars['post_type'] !== $this->postType || ( isset( $vars['orderby'] ) && $vars['orderby'] !== 'order' ) ) return $vars;
         $orderVars = array(
             'meta_key'  => '_pizzazz_item_order',
             'orderby'   => 'meta_value_num'
