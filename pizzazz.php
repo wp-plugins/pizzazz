@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Pizzazz
-Plugin URI: http://www.bluebridgedev.com/pizzazz-download
+Plugin URI: http://www.bluebridgedev.com/download/pizzazz.zip
 Description: An attractive and simple portfolio.
 Version: 1.0.0
 Author: Blue Bridge Development
