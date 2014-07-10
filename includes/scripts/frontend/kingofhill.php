@@ -1,6 +1,6 @@
 <?php
 
-namespace Pizzazz\includes\Scripts\FrontEnd;
+namespace pizzazz\includes\scripts\frontend;
 
 class KingOfHill {
 

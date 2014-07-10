@@ -1,9 +1,9 @@
 <?php
 
-namespace Pizzazz\includes\Shortcode;
+namespace pizzazz\includes\shortcode;
 
-use Pizzazz\includes\CustomPosts\Item;
-use Pizzazz\includes\themes\kingofhill\KingOfHillTheme;
+use pizzazz\includes\customposts\Item;
+use pizzazz\includes\themes\kingofhill\KingOfHillTheme;
 
 class Shortcode {
 
@@ -12,18 +12,18 @@ class Shortcode {
     protected $content;
 
     public function display($atts, $content, $tag) {
-        if(!in_array($tag, $this->tags)) return $content;
+        if( ! in_array( $tag, $this->tags ) ) return $content;
         $this->atts = $atts;
         $this->content = $content;
         return $this->$tag();
     }
 
     private function pizzazz() {
-        $id = (is_array($this->atts) && array_key_exists('id', $this->atts)) ? $this->atts['id'] : 0;
+        $id = ( is_array( $this->atts ) && array_key_exists( 'id', $this->atts ) ) ? $this->atts['id'] : 0;
         $itemPosts = new Item();
         $items = $itemPosts->getItems();
         $kingOfHill = new KingOfHillTheme();
-        $kingOfHill->setItems($items);
+        $kingOfHill->setItems( $items );
         return $kingOfHill->display();
     }
 }

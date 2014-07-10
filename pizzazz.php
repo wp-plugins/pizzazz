@@ -3,7 +3,7 @@
 Plugin Name: Pizzazz
 Plugin URI: http://www.bluebridgedev.com/download/pizzazz.zip
 Description: An attractive and simple portfolio.
-Version: 1.0.2
+Version: 1.0.3
 Author: Blue Bridge Development
 Author URI: http://www.bluebridgedev.com/
 License: GPLv2 or later
@@ -25,12 +25,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-namespace Pizzazz;
+namespace pizzazz;
 
-use Pizzazz\includes\Shortcode\Shortcode;
-use Pizzazz\includes\CustomPosts\Item;
-use Pizzazz\includes\Menu\Menu;
-use Pizzazz\includes\Scripts\Script;
+use pizzazz\includes\shortcode\Shortcode;
+use pizzazz\includes\customPosts\Item;
+use pizzazz\includes\menu\Menu;
+use pizzazz\includes\scripts\Script;
 
 require_once 'defines.php';
 require_once 'autoload.php';

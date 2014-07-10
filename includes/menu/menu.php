@@ -1,9 +1,6 @@
 <?php
 
-namespace Pizzazz\includes\Menu;
-
-use Pizzazz\includes\Menu\Pages\ItemForm;
-use Pizzazz\includes\Menu\Pages\Portfolio;
+namespace pizzazz\includes\menu;
 
 class Menu {
 

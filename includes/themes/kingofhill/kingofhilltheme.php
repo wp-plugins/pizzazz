@@ -1,6 +1,6 @@
 <?php
 
-namespace Pizzazz\includes\themes\kingofhill;
+namespace pizzazz\includes\themes\kingofhill;
 
 class KingOfHillTheme {
 
@@ -12,8 +12,7 @@ class KingOfHillTheme {
 
     public function display(){
         ob_start();
-        require_once('layout.php');
+        require_once( 'layout.php' );
         return ob_get_clean();
     }
-
 }

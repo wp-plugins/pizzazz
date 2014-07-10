@@ -1,23 +1,26 @@
 <?php
 
-namespace Pizzazz;
+namespace pizzazz;
 
 class Autoload {
 
     static public function init() {
-        spl_autoload_register(array(__CLASS__, 'load'));
+        spl_autoload_register( array( __CLASS__, 'load' ) );
     }
 
     static public function load($class) {
-        $classSplit = explode('\\', $class);
-        if ('Pizzazz' !== $classSplit[0]) return false;
-        $path = self::_loadPathToClass($classSplit);
-        if (file_exists($path)) require_once($path);
+        $classSplit = explode( '\\', strtolower( $class ) );
+        if ( 'pizzazz' !== array_shift( $classSplit ) ) return false;
+        $path = self::_loadPathToClass( $classSplit );
+        if ( ! file_exists( $path ) ) {
+            $message = sprintf( __( 'Error! File does not exist: %s', PIZZAZZ_TEXT_DOMAIN ), $path );
+            throw new \Exception( $message );
+        }
+        require( $path );
     }
 
     static private function _loadPathToClass($class) {
-        unset($class[0]);
-        return PIZZAZZ_PATH . implode('/', $class) . '.php';
+        return PIZZAZZ_PATH . implode( '/', $class ) . '.php';
     }
 }
 

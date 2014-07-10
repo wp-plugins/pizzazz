@@ -6,8 +6,7 @@
 
             <div class="pi-focus">
 
-                <img src="<?php echo $this->items[0]->imagePath; ?>" width="440"
-                     height="576" id="initialImage"/>
+                <img src="<?php echo $this->items[0]->imagePath; ?>" width="440" id="initialImage" />
 
             </div>
 
@@ -45,8 +44,7 @@
 
             <div class="pi-focus">
 
-                <img src="<?php echo $item->imagePath; ?>" width="440"
-                     height="576"/>
+                <img src="<?php echo $item->imagePath; ?>" width="440" />
 
             </div>
 
