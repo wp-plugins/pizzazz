@@ -4,7 +4,7 @@ Donate link: http://
 Tags: portfolio, thumbnails, plugins, slideshow
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,10 @@ Pizzazz is the brainchild of Blue Bridge Development, a web development firm bas
 3. The admin view  of items in portfolio.
 
 == Changelog ==
+
+= 1.0.5 =
+* Fixed file and directory names
+* Removed empty directories
 
 = 1.0.4 =
 * Fixed file and directory names that weren't lowercase
