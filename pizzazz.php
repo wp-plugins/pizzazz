@@ -3,7 +3,7 @@
 Plugin Name: Pizzazz
 Plugin URI: http://www.bluebridgedev.com/download/pizzazz.zip
 Description: An attractive and simple portfolio.
-Version: 1.0.3
+Version: 1.0.4
 Author: Blue Bridge Development
 Author URI: http://www.bluebridgedev.com/
 License: GPLv2 or later
