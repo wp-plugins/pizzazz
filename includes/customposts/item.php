@@ -122,6 +122,8 @@ class Item {
         $thumbnail = substr( $attachmentMeta['file'], 0, 8 ) . $attachmentMeta['sizes']['thumbnail']['file'];
         $item->imagePath = $upload . $attachmentMeta['file'];
         $item->thumbnailPath = $upload . $thumbnail;
+        $item->thumbnailWidth = $attachmentMeta['sizes']['thumbnail']['width'];
+        $item->thumbnailHeight = $attachmentMeta['sizes']['thumbnail']['height'];
         return true;
     }
 

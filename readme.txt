@@ -1,10 +1,10 @@
 === Pizzazz Portfolio Plugin ===
 Contributors: bluebridge
 Donate link: http://
-Tags: portfolio, thumbnails, plugins, slideshow
+Tags: portfolio, porfolio, portolio, web designer, websites, web developer, clients, work, gallery, showcase, projects, album, images gallery, presentation, slideshow
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,10 @@ Pizzazz is the brainchild of Blue Bridge Development, a web development firm bas
 3. The admin view  of items in portfolio.
 
 == Changelog ==
+
+= 1.0.6 =
+* Image and thumbnails dimensions set based on image sizes
+* Updated readme.txt tags
 
 = 1.0.5 =
 * Fixed file and directory names

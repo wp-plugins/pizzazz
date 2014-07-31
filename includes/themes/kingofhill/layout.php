@@ -6,7 +6,7 @@
 
             <div class="pi-focus">
 
-                <img src="<?php echo $this->items[0]->imagePath; ?>" width="440" id="initialImage" />
+                <img src="<?php echo $this->items[0]->imagePath; ?>" id="initialImage" width="<?php echo $this->_baseWidth; ?>" />
 
             </div>
 
@@ -26,8 +26,9 @@
         <?php foreach($this->items as $key => $item) : ?>
 
             <a href="javascript:updateFocus('pi-focus-<?php echo $key ?>');">
-                <img src="<?php echo $item->thumbnailPath; ?>" width="150"
-                     height="150" class="pi-thumb"/>
+                <img src="<?php echo $item->thumbnailPath; ?>"
+                     width="<?php echo $this->_thumbnailWidth; ?>" height="<?php echo $this->_thumbnailHeight; ?>"
+                     class="pi-thumb"/>
             </a>
 
         <?php endforeach; ?>
@@ -44,7 +45,7 @@
 
             <div class="pi-focus">
 
-                <img src="<?php echo $item->imagePath; ?>" width="440" />
+                <img src="<?php echo $item->imagePath; ?>" width="<?php echo $this->_baseWidth; ?>" />
 
             </div>
 
