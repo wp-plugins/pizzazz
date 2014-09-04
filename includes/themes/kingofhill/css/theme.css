@@ -9,6 +9,16 @@
     border: none;
 }
 
+#pizzazz .clearfix {
+    height: auto;
+}
+
+#pizzazz .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .pi-container {
     clear: both;
     margin: 8px auto;
@@ -17,7 +27,7 @@
 }
 
 #pi-main-pane{
-    overflow: auto;
+    overflow: visible;
     width: 100%
 }
 
@@ -27,11 +37,6 @@
 
 .pi-focus img {
     display: block;
-}
-
-img.pi-thumb {
-    float: left;
-    margin: 0 5px 5px 0;
 }
 
 .pi-hide {
@@ -55,6 +60,80 @@ div.pi-meta p {
     margin-bottom: 0;
 }
 
-div.pi-clearFix {
+#pizzazz .pi-meta h2 {
+    margin-top: 0;
+    padding-top: 0;
+    font-weight: normal;
+    font-size: 32px;
+    border-bottom: 1px dashed #dcdcdc;
+    padding-bottom: 5px;
+    position: relative;
+    margin-bottom: 0;
+}
 
+#pizzazz h2 span.pz-title {
+    font-weight: bold;
+}
+
+/* Slider Arrows */
+
+#carouselControlsAbove {
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+#carouselControlsAbove a {
+    position: relative;
+    text-decoration: none;
+}
+
+#carouselControlsAbove .prev span:after,
+#carouselControlsAbove .next span:before {
+    font-family: "dashicons";
+    display: inline-block;
+    content: "\f340";
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    font-size: 30px;
+    vertical-align: middle;
+}
+
+#carouselControlsAbove .next {
+    margin-left: 2px;
+}
+
+#carouselControlsAbove .next span:before {
+    content: "\f344";
+    margin-left: -4px;
+}
+
+#carouselControlsAbove .prev span:after,
+#carouselControlsAbove .next span:before {
+    background-color: #AAA !important;
+}
+
+#carouselControlsAbove .prev:hover span:after,
+#carouselControlsAbove .next:hover span:before {
+    background-color: #dcdcdc !important;
+}
+
+.carousel li a img:hover {
+    opacity: .6;
+}
+
+#carouselWrapper {
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    left: -20px;
+}
+
+.carouselBox .carousel {
+    left: 25px !important;
+}
+
+.carouselBox .carousel li {
+    margin: 0px 10px 0px 0px;
 }

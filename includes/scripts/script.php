@@ -14,14 +14,15 @@ class Script {
 
     protected function _loadAdminScripts() {
         return array(
-            'edit-pizzazz_item' => array( '\Admin\Item' ),
-            'pizzazz_item'      => array( '\Admin\Item' )
+            'edit-pizzazz_item'             => array('\Admin\Item'),
+            'pizzazz_item'                  => array('\Admin\Item'),
+            'pizzazz_page_pizzazz_enticing' => array('\Admin\Enticing')
         );
     }
 
     protected function _loadFrontEndScripts() {
         return array(
-            'king-of-hill'  => array( '\FrontEnd\KingOfHill' )
+            'king-of-hill'  => array('\FrontEnd\KingOfHill')
         );
     }
 

@@ -15,6 +15,30 @@ jQuery(document).ready(function ($) {
     }, 1000);
 
 
+    var setSliderThumbSize = function(){
+
+        var carousel = $('div.carousel');
+
+        if(carousel.length === 0) return;
+
+        var width = 0;
+
+        var height = 0;
+
+        carousel.find('li').each(function(){
+
+            width = ($(this).find('img').width() > width) ? $(this).find('img').width() : width;
+
+            height = ($(this).find('img').height() > height) ? $(this).find('img').height() : height;
+
+        });
+
+        carousel.find('li').width(width).height(height);
+
+    };
+
+    setSliderThumbSize();
+
 });
 
 /*  TODO: Should refactor this if we build further */

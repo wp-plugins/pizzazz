@@ -4,30 +4,52 @@ namespace pizzazz\includes\themes\kingofhill;
 
 class KingOfHillTheme {
 
-    protected $items = array();
+    protected $_items = array();
     protected $_baseWidth = 400;
     protected $_thumbnailWidth = 350;
     protected $_thumbnailHeight = 150;
 
     public function setItems($items) {
-        $this->items = $items;
+        $this->_items = $items;
     }
 
     public function display(){
-        $this->_setBaseWidth();
-        $this->_setThumbnailDimensions();
+        if(!empty($this->_items)) $this->_loadWidthSettings();
         ob_start();
-        require_once( 'layout.php' );
+        require_once($this->_loadLayout());
         return ob_get_clean();
     }
 
-    public function _setBaseWidth(){
-        $size = getimagesize($this->items[0]->imagePath);
+    protected function _loadWidthSettings(){
+        $this->_setBaseWidth();
+        $this->_setThumbnailDimensions();
+    }
+
+    public function _setBaseWidth($i = 0){
+        if(isset($this->_items[$i]) && !isset($this->_items[$i]->imagePath)) $this->_setBaseWidth(++$i);
+        if(!isset($this->_items[$i]) || !isset($this->_items[$i]->imagePath)) return false;
+        $size = getimagesize($this->_items[$i]->imagePath);
         $this->_baseWidth = $size[0];
     }
 
-    protected function _setThumbnailDimensions(){
-        $this->_thumbnailWidth = $this->items[0]->thumbnailWidth;
-        $this->_thumbnailHeight = $this->items[0]->thumbnailHeight;
+    protected function _setThumbnailDimensions($i = 0){
+        if(isset($this->_items[$i]) && !isset($this->_items[$i]->thumbnailWidth)) $this->_setThumbnailDimensions(++$i);
+        if(!isset($this->_items[$i]) || !isset($this->_items[$i]->thumbnailWidth)) return false;
+        $this->_thumbnailWidth = $this->_items[0]->thumbnailWidth;
+        $this->_thumbnailHeight = $this->_items[0]->thumbnailHeight;
     }
+
+    protected function _loadLayout(){
+        if(empty($this->_items)) return 'noitems.php';
+        return 'layout.php';
+    }
+
+    protected function _formatTitle($title){
+        $title = explode(' ', $title);
+        $first = array_shift($title);
+        $title = implode(' ', $title);
+        return '<span class="pz-title">' . $first . '</span> ' . $title;
+
+    }
+
 }

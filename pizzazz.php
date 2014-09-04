@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Pizzazz
-Plugin URI: http://www.bluebridgedev.com/download/pizzazz.zip
-Description: An attractive and simple portfolio.
-Version: 1.0.6
+Plugin URI: http://www.giveitpizzazz.com/
+Description: Portfolio Plugin that is a snap to setup, makes you look awesome, and builds sales.
+Version: 1.0.7
 Author: Blue Bridge Development
 Author URI: http://www.bluebridgedev.com/
 License: GPLv2 or later
@@ -34,12 +34,36 @@ use pizzazz\includes\scripts\Script;
 
 require_once 'defines.php';
 require_once 'autoload.php';
+require 'includes/plugin-updates/plugin-update-checker.php';
 
 class Pizzazz {
 
     public function execute() {
+        $this->_initUpdater();
         $this->_activationHooks();
         $this->_actions();
+    }
+
+    protected function _initUpdater() {
+        $PizzazzUpdateChecker = \PucFactory::buildUpdateChecker(
+            'http://giveitpizzazz.com/index.php?option=com_gatekeeper&task=update.check&format=json',
+            realpath(__FILE__),
+            'pizzazz'
+        );
+        $PizzazzUpdateChecker->addQueryArgFilter(array(&$this, 'addUpdaterRequestArgs'));
+        if($this->_settingsSaved()) $PizzazzUpdateChecker->checkForUpdates();
+    }
+
+    protected function _settingsSaved() {
+        $page = (isset($_REQUEST['page'])) ? $_REQUEST['page'] : '';
+        $saved = (isset($_REQUEST['settings-updated'])) ? $_REQUEST['settings-updated'] : false;
+        return ($page === 'pizzazz_options' && $saved) ? true : false;
+    }
+
+    public function addUpdaterRequestArgs($args) {
+        $args['email'] = urlencode(get_option('pizzazz_subscriber_email'));
+        $args['domain'] = preg_replace('#^https?://#', '', get_site_url());
+        return $args;
     }
 
     protected function _activationHooks() {
@@ -49,6 +73,7 @@ class Pizzazz {
     protected function _actions() {
         add_action('init', array(&$this, 'init'));
         add_action('admin_menu', array(&$this, 'adminMenu'));
+        add_action('admin_init', array(&$this, 'adminInit'));
         add_action('admin_enqueue_scripts', array(&$this, 'adminEnqueueScripts'));
         add_action('wp_enqueue_scripts', array(&$this, 'enqueueScripts'));
         add_action('do_meta_boxes', array(&$this, 'updateImageMetaBoxTitle'));
@@ -76,6 +101,10 @@ class Pizzazz {
     public function adminMenu() {
         $menu = new Menu();
         $menu->addPages();
+    }
+
+    public function adminInit() {
+        register_setting('pizzazz-options', 'pizzazz_subscriber_email');
     }
 
     public function adminEnqueueScripts() {

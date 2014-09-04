@@ -6,6 +6,11 @@ class KingOfHill {
 
     public function enqueue() {
         wp_enqueue_script(
+            'pizzazz-slider-js',
+            plugins_url() . '/pizzazz/includes/themebase/js/slider.js',
+            array( 'jquery' )
+        );
+        wp_enqueue_script(
             'pizzazz-kingofthehill-js',
             plugins_url() . '/pizzazz/includes/themes/kingofhill/js/theme.js',
             array( 'jquery' )
@@ -15,5 +20,6 @@ class KingOfHill {
             null,
             null,
             'all' );
+        wp_enqueue_style('dashicons');
     }
 }
