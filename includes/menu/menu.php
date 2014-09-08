@@ -6,7 +6,6 @@ class Menu {
 
     public function addPages() {
         $this->_addPortfoliosPage();
-        $this->_addOptionsPage();
         $this->_addEnticingPage();
     }
 
@@ -27,20 +26,5 @@ class Menu {
 
     public function displayEnticingPage() {
         include(PIZZAZZ_INCLUDES_PATH . 'menu/html/enticing.php');
-    }
-
-    protected function _addOptionsPage() {
-        add_submenu_page(
-            'pizzazz_portfolios',
-            'Pizzazz Settings',
-            'Settings',
-            "manage_options",
-            'pizzazz_options',
-            array(&$this, 'displayOptionsPage')
-        );
-    }
-
-    public function displayOptionsPage() {
-        include(PIZZAZZ_INCLUDES_PATH . 'menu/html/options.php');
     }
 }

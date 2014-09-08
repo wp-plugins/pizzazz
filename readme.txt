@@ -4,7 +4,7 @@ Donate link:
 Tags: portfolio, porfolio, portolio, web designer, clients, work, gallery, showcase, projects, images gallery, presentation, slideshow
 Requires at least: 3.5
 Tested up to: 4.0.0
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,7 @@ Pizzazz helps you leap over this obstacle. It takes *just a few minutes to set u
 * Width sensitive.  Depending on the width of your content area, Pizzazz will adjust the display of items to keep things looking clean even when there isn't much room to do so.
 * Search Friendly.  Portfolio content loads on the page using the short code and not via Ajax, so it's indexable by search engines.
 * Tablet friendly.  No flash is used, so your portfolio will display normally on viewer's Droid tablets and iPads.
+* Coming soon: custom fields, social integration, linked call to action buttons, category layouts, more themes,  and more features.
 
 == Installation ==
 
@@ -64,6 +65,9 @@ Pizzazz is the baby of Blue Bridge Development, a web development firm based out
 3. The admin view  of items in portfolio.
 
 == Changelog ==
+
+= 1.0.8 =
+* Removed update checker to comply with wordpress.org guidelines
 
 = 1.0.7 =
 * Added updater to upgrade to commercial version
