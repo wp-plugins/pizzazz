@@ -1,6 +1,10 @@
+<?php
+
+if(!defined('ABSPATH')) die(-1);
+?>
 <div id="pizzazz">
 
-    <div class="pi-container">
+    <div class="pi-container clearfix">
 
         <div id="pi-main-pane">
 
@@ -13,7 +17,11 @@
 
                 <?php else : ?>
 
-                    <span class="pi-notice" style="width: <?php echo $this->_baseWidth; ?>">No image available</span>
+                    <span class="pi-notice" style="width: <?php echo $this->_baseWidth; ?>">
+
+                        <?php echo __('No image available', 'pizzazz'); ?>
+
+                    </span>
 
                 <?php endif; ?>
 
@@ -23,7 +31,7 @@
 
                 <h2><?php echo $this->_formatTitle($this->_items[0]->post_title); ?></h2>
 
-                <p><?php echo $this->_items[0]->post_content; ?></p>
+                <p><?php echo apply_filters('the_content', $this->_items[0]->post_content); ?></p>
 
             </div>
 
@@ -32,10 +40,10 @@
 
     <div class="pi-container">
 
-            <div id="carouselControlsAbove">
-                <a href="javascript:void(0);" class="prev"><span>&nbsp;</span> </a>
-                <a href="javascript:void(0);" class="next"><span>&nbsp;</span></a>
-            </div>
+        <div id="carouselControlsAbove">
+            <a href="javascript:void(0);" class="prev"><span>&nbsp;</span> </a>
+            <a href="javascript:void(0);" class="next"><span>&nbsp;</span></a>
+        </div>
 
         <div id="carouselWrapper" class="clearfix">
 
@@ -54,7 +62,8 @@
                                          width="<?php echo $this->_thumbnailWidth; ?>"
                                          height="<?php echo $this->_thumbnailHeight; ?>"
                                          class="pi-thumb"
-                                        <?php if(!isset($this->item->thumbnailPath)) echo 'alt="no image available"'; ?>
+                                        <?php if(!isset($this->item->thumbnailPath)) printf('alt="%s"',
+                                            __('no image available', 'pizzazz')); ?>
                                         />
                                 </a>
 
@@ -137,7 +146,7 @@
 
                 <?php else : ?>
 
-                    <span class="pi-notice">No image available</span>
+                    <span class="pi-notice"><?php echo __('No image available', 'pizzazz'); ?></span>
 
                 <?php endif; ?>
 
@@ -147,7 +156,7 @@
 
                 <h2><?php echo $this->_formatTitle($item->post_title); ?></h2>
 
-                <p><?php echo $item->post_content; ?></p>
+                <p><?php echo apply_filters('the_content', $item->post_content); ?></p>
 
             </div>
 

@@ -1,8 +1,11 @@
 jQuery(document).ready(function ($) {
 
     var initialImageWidth = $('#initialImage').width();
+
     var containerWidth = $('#pizzazz').width();
+
     $('div.pi-focus').css('min-width', initialImageWidth + 20 + 'px');
+
     if ((containerWidth - initialImageWidth) < 350) {
         $('div.pi-meta').css('width', '100%');
         $('div.pi-focus').css('width', '100%');
@@ -10,10 +13,16 @@ jQuery(document).ready(function ($) {
     }
 
     window.setTimeout(function () {
-        var main = $('div.pi-container');
-        main.css('min-height', main.height() + 'px');
-    }, 1000);
 
+        if(!$('#pizzazz').hasClass('mobile')) {
+
+            var main = $('div.pi-container');
+
+            main.css('min-height', main.height() + 'px');
+
+        }
+
+    }, 1000);
 
     var setSliderThumbSize = function(){
 

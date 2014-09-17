@@ -2,9 +2,17 @@
 
 namespace pizzazz\includes\scripts\frontend;
 
+use pizzazz\Pizzazz;
+
 class KingOfHill {
 
     public function enqueue() {
+        wp_enqueue_style( 'pizzazz-kingofthehill-css',
+            plugins_url() . '/pizzazz/includes/themes/kingofhill/css/theme.css',
+            null,
+            null,
+            'all' );
+        wp_enqueue_style('dashicons');
         wp_enqueue_script(
             'pizzazz-slider-js',
             plugins_url() . '/pizzazz/includes/themebase/js/slider.js',
@@ -15,11 +23,5 @@ class KingOfHill {
             plugins_url() . '/pizzazz/includes/themes/kingofhill/js/theme.js',
             array( 'jquery' )
         );
-        wp_enqueue_style( 'pizzazz-kingofthehill-css',
-            plugins_url() . '/pizzazz/includes/themes/kingofhill/css/theme.css',
-            null,
-            null,
-            'all' );
-        wp_enqueue_style('dashicons');
     }
 }

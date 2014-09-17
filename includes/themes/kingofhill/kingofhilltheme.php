@@ -2,6 +2,8 @@
 
 namespace pizzazz\includes\themes\kingofhill;
 
+use pizzazz\Pizzazz;
+
 class KingOfHillTheme {
 
     protected $_items = array();
@@ -40,16 +42,16 @@ class KingOfHillTheme {
     }
 
     protected function _loadLayout(){
-        if(empty($this->_items)) return 'noitems.php';
-        return 'layout.php';
+        if(empty($this->_items)) return 'html/noitems.php';
+        return (!Pizzazz::isMobile()) ? 'html/layout.php' : 'html/layout-mobile.php';
     }
 
     protected function _formatTitle($title){
+        $title = sanitize_text_field($title);
         $title = explode(' ', $title);
         $first = array_shift($title);
         $title = implode(' ', $title);
         return '<span class="pz-title">' . $first . '</span> ' . $title;
-
     }
 
 }

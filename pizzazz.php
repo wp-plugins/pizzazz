@@ -3,7 +3,7 @@
 Plugin Name: Pizzazz
 Plugin URI: http://www.giveitpizzazz.com/
 Description: Portfolio Plugin that is a snap to setup, makes you look awesome, and builds sales.
-Version: 1.0.8
+Version: 1.0.9
 Author: Blue Bridge Development
 Author URI: http://www.bluebridgedev.com/
 License: GPLv2 or later
@@ -34,8 +34,15 @@ use pizzazz\includes\scripts\Script;
 
 require_once 'defines.php';
 require_once 'autoload.php';
+if(!class_exists('uagent_info')) require_once PIZZAZZ_INCLUDES_PATH . 'mdetect.php';
 
 class Pizzazz {
+
+    static public function isMobile() {
+        $mobileDetect = new \uagent_info();
+        $isMobile = $mobileDetect->DetectMobileQuick();
+        return $isMobile;
+    }
 
     public function execute() {
         $this->_activationHooks();
@@ -64,7 +71,7 @@ class Pizzazz {
     }
 
     public function init() {
-        load_plugin_textdomain(PIZZAZZ_TEXT_DOMAIN, false, PIZZAZZ_PATH . '/languages/');
+        load_plugin_textdomain('pizzazz', false, PIZZAZZ_PATH . '/languages/');
         add_filter('manage_pizzazz_item_posts_columns', array(&$this, 'addColumns'));
         add_action('manage_pizzazz_item_posts_custom_column', array(&$this, 'fillColumn'), 10, 2);
         add_filter('manage_edit-pizzazz_item_sortable_columns', array(&$this, 'addColumnSorting'));
@@ -104,7 +111,7 @@ class Pizzazz {
     }
 
     public function orderByColumn($vars) {
-        if ( !$vars || !isset( $vars['post_type' ] ) ) return $vars;
+        if(!$vars || !isset($vars['post_type'])) return $vars;
         $item = new Item();
         return $item->orderListRows($vars);
     }
@@ -122,7 +129,9 @@ class Pizzazz {
     public function savePost($id) {
         if((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)) return;
         $item = new Item();
-        if(!isset($_POST['action']) || $_POST['post_type'] !== $item->getPostType()) return;
+        if(!isset($_POST['action']) || $_POST['action'] !== 'editpost' || $_POST['post_type'] !== $item->getPostType()){
+            return;
+        }
         check_admin_referer($_POST['action'], 'pizzazz_order_nonce');
         $item->save($id);
     }

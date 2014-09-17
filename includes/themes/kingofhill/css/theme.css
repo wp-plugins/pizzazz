@@ -26,11 +26,6 @@
     width: 100%;
 }
 
-#pi-main-pane{
-    overflow: visible;
-    width: 100%
-}
-
 .pi-focus {
     padding-bottom: 15px;
 }
@@ -136,4 +131,24 @@ div.pi-meta p {
 
 .carouselBox .carousel li {
     margin: 0px 10px 0px 0px;
+}
+
+/* Mobile */
+
+#pi-main-pane,
+#pizzazz.mobile div[id^="pi-focus"] {
+    overflow: visible;
+    width: 100%;
+}
+
+#pizzazz.mobile .pi-focus img {
+    border: 1px solid #dcdcdc;
+}
+
+#pizzazz.mobile .pi-container {
+    padding-bottom: 40px;
+}
+
+#pizzazz.mobile .pi-meta {
+    list-style-position: inside;
 }

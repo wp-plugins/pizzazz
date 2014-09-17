@@ -28,19 +28,19 @@ class Item {
 
     protected function _getLabels() {
         return array(
-            'name'                  => __('Items', PIZZAZZ_TEXT_DOMAIN),
-            'singular_name'         => __('Item', PIZZAZZ_TEXT_DOMAIN),
-            'add_new'               => __('Add New', PIZZAZZ_TEXT_DOMAIN),
-            'add_new_item'          => __('Add New Item', PIZZAZZ_TEXT_DOMAIN),
-            'edit_item'             => __('Edit', PIZZAZZ_TEXT_DOMAIN),
-            'new_item'              => __('Edit Item', PIZZAZZ_TEXT_DOMAIN),
-            'all_items'             => __('Items', PIZZAZZ_TEXT_DOMAIN),
-            'view_item'             => __('View Item', PIZZAZZ_TEXT_DOMAIN),
-            'search_items'          => __('Search Items', PIZZAZZ_TEXT_DOMAIN),
-            'not_found'             => __('No Items Found', PIZZAZZ_TEXT_DOMAIN),
-            'not_found_in_trash'    => __('No Items Found in Trash', PIZZAZZ_TEXT_DOMAIN),
-            'parent_item_colon'     => __('', PIZZAZZ_TEXT_DOMAIN),
-            'menu_name'             => __('Items', PIZZAZZ_TEXT_DOMAIN),
+            'name'                  => __('Items', 'pizzazz'),
+            'singular_name'         => __('Item', 'pizzazz'),
+            'add_new'               => __('Add New', 'pizzazz'),
+            'add_new_item'          => __('Add New Item', 'pizzazz'),
+            'edit_item'             => __('Edit', 'pizzazz'),
+            'new_item'              => __('Edit Item', 'pizzazz'),
+            'all_items'             => __('Items', 'pizzazz'),
+            'view_item'             => __('View Item', 'pizzazz'),
+            'search_items'          => __('Search Items', 'pizzazz'),
+            'not_found'             => __('No Items Found', 'pizzazz'),
+            'not_found_in_trash'    => __('No Items Found in Trash', 'pizzazz'),
+            'parent_item_colon'     => __('', 'pizzazz'),
+            'menu_name'             => __('Items', 'pizzazz'),
         );
     }
 
@@ -88,7 +88,7 @@ class Item {
             'meta_key'  => '_pizzazz_item_order',
             'orderby'   => 'meta_value_num'
         );
-        if (! isset($vars['order'])) $orderVars['order'] = 'asc';
+        if(!isset($vars['order'])) $orderVars['order'] = 'asc';
         return array_merge($vars, $orderVars);
     }
 
@@ -131,7 +131,7 @@ class Item {
         remove_meta_box('postimagediv', 'custom_post_type', 'side');
         add_meta_box(
             'postimagediv',
-            __('Portfolio Image', PIZZAZZ_TEXT_DOMAIN),
+            __('Portfolio Image', 'pizzazz'),
             'post_thumbnail_meta_box',
             $this->postType,
             'side',
@@ -141,7 +141,7 @@ class Item {
     public function addMetaBoxes() {
         add_meta_box(
             'orderdiv',
-            __('Item Order', PIZZAZZ_TEXT_DOMAIN),
+            __('Item Order', 'pizzazz'),
             array(&$this, 'displayMetaBox'),
             $this->postType
        );
@@ -165,7 +165,7 @@ class Item {
     }
 
     public function saveOrder() {
-        if(! $this->_beforeSaveOrder()) {
+        if(!$this->_beforeSaveOrder()) {
             return;
         }
         $postIds = array_map('intval', $_REQUEST['post']);
@@ -222,7 +222,7 @@ class Item {
 
     protected function _displayError() {
         $title = __('WordPress Failure Notice');
-        $html = __('Error loading order values.', PIZZAZZ_TEXT_DOMAIN);
+        $html = __('Error loading order values.', 'pizzazz');
         if (wp_get_referer()) {
             $html .= "</p><p><a href='" . esc_url(remove_query_arg('updated', wp_get_referer())) . "'>";
             $html .= __('Please try again.') . "</a>";

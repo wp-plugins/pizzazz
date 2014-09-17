@@ -14,7 +14,7 @@ class Item {
 
     protected function _localizeScript() {
         $data = array(
-            'pizzazzMediaAction' => __( 'Save Order', PIZZAZZ_TEXT_DOMAIN )
+            'pizzazzMediaAction' => __( 'Save Order', 'pizzazz' )
         );
         wp_localize_script( 'pizzazz-item-script', 'Pizzazz', $data );
     }
