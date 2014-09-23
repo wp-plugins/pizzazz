@@ -8,8 +8,18 @@ class KingOfHillTheme {
 
     protected $_items = array();
     protected $_baseWidth = 400;
+    protected $options;
     protected $_thumbnailWidth = 350;
     protected $_thumbnailHeight = 150;
+
+    public function __construct() {
+        $this->_loadOptions();
+    }
+
+    protected function _loadOptions(){
+        $this->options = new \stdClass();
+        $this->options->share = (intval(get_option('pizzazz_show_social_share')));
+    }
 
     public function setItems($items) {
         $this->_items = $items;

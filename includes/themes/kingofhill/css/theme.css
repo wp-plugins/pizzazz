@@ -72,46 +72,44 @@ div.pi-meta p {
 
 /* Slider Arrows */
 
-#carouselControlsAbove {
-    text-align: center;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-#carouselControlsAbove a {
-    position: relative;
-    text-decoration: none;
-}
-
-#carouselControlsAbove .prev span:after,
-#carouselControlsAbove .next span:before {
-    font-family: "dashicons";
+#pz-thumbSliderLeft, #pz-thumbSliderRight {
+    position: absolute;
     display: inline-block;
-    content: "\f340";
-    color: #fff;
+    width: 15px;
+    text-decoration: none;
+    top: 45px;
+}
+
+#pz-thumbSliderLeft {
+    z-index: 1111;
+}
+
+#pz-thumbSliderLeft.sides {
+    left: 5px;
+}
+
+#pz-thumbSliderRight {
+    z-index: 1112;
+    right: -13px;
+}
+
+#pz-thumbSliderLeft span.pz-slider-btn, #pz-thumbSliderRight span.pz-slider-btn {
+    display: inline-block;
     padding: 10px;
-    margin: 0;
-    font-size: 30px;
+    width: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    background: url('../../../themebase/images/circle.png') 3px 13px no-repeat;
+}
+
+.carouselControls .prev span:before, .next span:before{
+    font-family: "dashicons";
+    content: "\f340";
     vertical-align: middle;
 }
 
-#carouselControlsAbove .next {
-    margin-left: 2px;
-}
-
-#carouselControlsAbove .next span:before {
+.carouselControls .next span:before{
     content: "\f344";
-    margin-left: -4px;
-}
-
-#carouselControlsAbove .prev span:after,
-#carouselControlsAbove .next span:before {
-    background-color: #AAA !important;
-}
-
-#carouselControlsAbove .prev:hover span:after,
-#carouselControlsAbove .next:hover span:before {
-    background-color: #dcdcdc !important;
 }
 
 .carousel li a img:hover {
@@ -151,4 +149,38 @@ div.pi-meta p {
 
 #pizzazz.mobile .pi-meta {
     list-style-position: inside;
+}
+
+/* Social Share */
+/* https://gist.github.com/thebigreason/1296097 */
+
+.pi-social {
+    font-size: 1px;
+    text-align: right;
+    margin: 0 0 25px;
+}
+
+#pizzazz .pi-social iframe {
+    margin: 0;
+}
+
+.pi-social .facebook iframe {
+    vertical-align: middle;
+}
+
+.pi-social span {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.pi-social span.twitter {
+    width: 75px;
+}
+
+.pi-social span.facebook {
+    width: 90px;
+}
+
+.pi-social span.google {
+    width: 65px;
 }

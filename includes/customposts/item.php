@@ -28,19 +28,17 @@ class Item {
 
     protected function _getLabels() {
         return array(
-            'name'                  => __('Items', 'pizzazz'),
+            'name'                  => __('Portfolio Items', 'pizzazz'),
             'singular_name'         => __('Item', 'pizzazz'),
             'add_new'               => __('Add New', 'pizzazz'),
             'add_new_item'          => __('Add New Item', 'pizzazz'),
             'edit_item'             => __('Edit', 'pizzazz'),
             'new_item'              => __('Edit Item', 'pizzazz'),
-            'all_items'             => __('Items', 'pizzazz'),
             'view_item'             => __('View Item', 'pizzazz'),
             'search_items'          => __('Search Items', 'pizzazz'),
             'not_found'             => __('No Items Found', 'pizzazz'),
             'not_found_in_trash'    => __('No Items Found in Trash', 'pizzazz'),
-            'parent_item_colon'     => __('', 'pizzazz'),
-            'menu_name'             => __('Items', 'pizzazz'),
+            'parent_item_colon'     => __('', 'pizzazz')
         );
     }
 
@@ -250,6 +248,6 @@ class Item {
         ) {
             return;
         }
-        include_once('html/ratingrequest.php');
+        include_once('html/list-blurb.php');
     }
 }

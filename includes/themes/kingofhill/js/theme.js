@@ -24,9 +24,46 @@ jQuery(document).ready(function ($) {
 
     }, 1000);
 
+    var twitter = function(){
+        !function(d,s,id) {
+            var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+            if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;
+                js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);
+            }
+        }(document, 'script', 'twitter-wjs');
+    };
+
+    var facebook = function(){
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    };
+
+    var gplus = function(){
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
+        })();
+    };
+
+    twitter();
+    facebook();
+    gplus();
+
     var setSliderThumbSize = function(){
 
         var carousel = $('div.carousel');
+
+        console.log(carousel);
 
         if(carousel.length === 0) return;
 
@@ -36,11 +73,15 @@ jQuery(document).ready(function ($) {
 
         carousel.find('li').each(function(){
 
-            width = ($(this).find('img').width() > width) ? $(this).find('img').width() : width;
+            var image = $(this).find('img');
 
-            height = ($(this).find('img').height() > height) ? $(this).find('img').height() : height;
+            width = (image.width() > width) ? image.width() : width;
+
+            height = (image.height() > height) ? image.height() : height;
 
         });
+
+        console.log(height);
 
         carousel.find('li').width(width).height(height);
 

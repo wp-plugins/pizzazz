@@ -4,6 +4,28 @@ if(!defined('ABSPATH')) die(-1);
 ?>
 <div id="pizzazz">
 
+    <?php if ($this->options->share ) : ?>
+
+        <div class="pi-social">
+
+            <span class="twitter">
+                <a href="http://twitter.com/share"
+                   class="twitter-share-button"
+                   data-url="<?php the_permalink(); ?>">Tweet</a>
+            </span>
+
+            <span class="facebook">
+                <div class="fb-share-button" data-href="<?php the_permalink(); ?>" data-type="button_count"></div>
+            </span>
+
+            <span class="google">
+                <g:plusone size="medium" href="<?php the_permalink(); ?>"></g:plusone>
+            </span>
+
+        </div>
+
+    <?php endif; ?>
+
     <div class="pi-container clearfix">
 
         <div id="pi-main-pane">
@@ -40,12 +62,13 @@ if(!defined('ABSPATH')) die(-1);
 
     <div class="pi-container">
 
-        <div id="carouselControlsAbove">
-            <a href="javascript:void(0);" class="prev"><span>&nbsp;</span> </a>
-            <a href="javascript:void(0);" class="next"><span>&nbsp;</span></a>
-        </div>
-
         <div id="carouselWrapper" class="clearfix">
+
+            <div class="carouselControls carouselBox">
+                <a href="javascript:void(0);" class="prev sides" id="pz-thumbSliderLeft">
+                    <span class="pz-slider-btn">&nbsp;</span>
+                </a>
+            </div>
 
             <div class="carouselBox">
 
@@ -75,6 +98,12 @@ if(!defined('ABSPATH')) die(-1);
 
                 </div>
 
+            </div>
+
+            <div class="carouselControls carouselBox">
+                <a href="javascript:void(0);" class="next sides" id="pz-thumbSliderRight">
+                    <span class="pz-slider-btn">&nbsp;</span>
+                </a>
             </div>
 
         </div>
