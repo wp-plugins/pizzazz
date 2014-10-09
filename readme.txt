@@ -12,6 +12,8 @@ Quick Setup | Responsive | 1 Page Display
 
 == Description ==
 
+Watch the demo on YouTube: https://www.youtube.com/watch?v=HEeHAmyDH6c
+
 As a creative professional, your portfolio plays a critical role in persuading potential clients to contact you. You want it to be visually distinct from the other pages on your site. You want to capture your viewers attention. *But creating a distinct portfolio often takes programming skill and days of labor.*
 
 Pizzazz helps you leap over this obstacle. It takes *just a few minutes to set up* and embeds in posts and pages by simply typing in the portfolio shortcode. Your work is displayed cleanly with your comments for each project and snazzy visual effects linking everything together. This **frees you up to focus on what really matters.**
