@@ -4,7 +4,7 @@ Donate link:
 Tags: portfolio, porfolio, portolio, web designer, clients, work, gallery, showcase, projects, images gallery, presentation, slideshow
 Requires at least: 3.5
 Tested up to: 4.0.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,9 @@ Pizzazz is the baby of Blue Bridge Development, a web development firm based out
 3. The admin view  of items in portfolio.
 
 == Changelog ==
+
+= 1.1.1 =
+* Added readme link to youtube demo
 
 = 1.1.0 =
 * Added social share feature
