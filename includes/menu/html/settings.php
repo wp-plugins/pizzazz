@@ -33,6 +33,12 @@
 
         <?php submit_button(); ?>
 
-    </form>
+
+                <h3>What sort of settings does Pizzazz Premium have?</h3>
+
+                    <img src="<?php echo plugins_url(); ?>/pizzazz/assets/images/premiumSettings.png" width="527"/>
+<br /><br />
+        <a href="http://giveitpizzazz.com/portfolio-plugin-wordpress?utm_source=Free%20Plugin%20Settings&utm_medium=copy&utm_campaign=plugin" class="button-primary">Take the Tour</a>
+
 
 </div>

@@ -4,24 +4,21 @@ Donate link:
 Tags: portfolio, porfolio, portolio, web designer, clients, work, gallery, showcase, projects, images gallery, presentation, slideshow
 Requires at least: 3.5
 Tested up to: 4.0.0
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Quick Setup | Responsive | 1 Page Display
+Super Easy | Responsive | 1 Page Display
 
 == Description ==
 
 Watch the demo on YouTube: https://www.youtube.com/watch?v=HEeHAmyDH6c
 
-As a creative professional, your portfolio plays a critical role in persuading potential clients to contact you. You want it to be visually distinct from the other pages on your site. You want to capture your viewers attention. *But creating a distinct portfolio often takes programming skill and days of labor.*
-
-Pizzazz helps you leap over this obstacle. It takes *just a few minutes to set up* and embeds in posts and pages by simply typing in the portfolio shortcode. Your work is displayed cleanly with your comments for each project and snazzy visual effects linking everything together. This **frees you up to focus on what really matters.**
-
 # Features #
 
-* 1 page design.  No page loads keeps your audience's attention and browsing through your work.
+* 1 page design.  No page loads keeps your audience's attention and browsing your work.
 * Responsive. Your portfolio will flatten out to display cleanly on mobile devices and normally on viewer's Droid tablets and iPads.
+* Share icon functionality integrated.
 * Intuitive Interface. Pizzazz uses the same interface as WordPress categories and posts, so it's easy to figure out what goes where.
 * Use HTML elements like lists, images, and links in your item descriptions.
 * Width sensitive.  Depending on the width of your content area, Pizzazz will adjust the display of items to keep things looking clean even when there isn't much room to do so.
@@ -29,7 +26,7 @@ Pizzazz helps you leap over this obstacle. It takes *just a few minutes to set u
 
 == Installation ==
 
-Documentation available here: http://giveitpizzazz.com/wp-portfolio-support/documentation
+Pizzazz Free Documentation available here: http://giveitpizzazz.com/wp-portfolio-support/documentation
 
 * 1) Extract the zip file and just drop the contents in the `wp-content/plugins/` directory of your WordPress installation
 * 2) Activate the plugin from Plugins page.
@@ -69,10 +66,13 @@ Pizzazz is the baby of Blue Bridge Development, a web development firm based out
 == Screenshots ==
 
 1. Pizzazz Portfolio full width.
-2. The same portfolio compacted to fit with a sidebar.
-3. The admin view  of items in portfolio.
+2. The admin view  of items in portfolio.
+3. Pizzazz Portfolio item.
 
 == Changelog ==
+
+= 1.1.2 =
+* Added premium settings screenshot to settings page
 
 = 1.1.1 =
 * Added readme link to youtube demo
