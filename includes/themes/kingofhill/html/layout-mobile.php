@@ -26,11 +26,17 @@ if(!defined('ABSPATH')) die(-1);
 
                 </div>
 
-                <div class="pi-meta">
+                <div class="pi-meta pie-box">
 
-                    <h2><?php echo $this->_formatTitle($item->post_title); ?></h2>
+                    <h2 class="pi-bg-meta-heading"><?php echo $this->_formatTitle($item->post_title); ?></h2>
 
-                    <p><?php echo apply_filters('the_content', $item->post_content); ?></p>
+                    <div class="pi-content clearfix">
+
+                        <?php echo apply_filters('the_content', $item->post_content); ?>
+
+                        <?php include 'custom-fields.php'; ?>
+
+                    </div>
 
                 </div>
 

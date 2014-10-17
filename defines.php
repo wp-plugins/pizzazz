@@ -1,6 +1,6 @@
 <?php
 
-define('PIZZAZZ_VERSION', '1.1.2');
+define('PIZZAZZ_VERSION', '1.2.0');
 
 define('PIZZAZZ_PATH', plugin_dir_path(__FILE__));
 define('PIZZAZZ_URL', plugin_dir_url(__FILE__));

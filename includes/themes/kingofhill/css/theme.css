@@ -184,3 +184,41 @@ div.pi-meta p {
 .pi-social span.google {
     width: 65px;
 }
+
+/* Custom Fields */
+
+.custom-row {
+    margin: 2px 0;
+}
+
+.custom-row:first-of-type {
+    margin-top: 20px;
+}
+
+.custom-row div {
+    float: left;
+}
+
+.pz-custom-label span {
+    background: #ccc;
+    line-height: 30px;
+    padding: 0 15px;
+    display: inline-block;
+    min-width: 35px;
+    text-align: center;
+}
+
+.pz-custom-value {
+    line-height: 30px;
+    margin-left: 10px;
+    display: inline-block;
+    border-bottom: 1px dotted #ccc;
+}
+
+#pi-main-pane .pi-meta .custom-row:last-of-type .pz-custom-value {
+    border-bottom: none;
+}
+
+.pz-custom-label-container {
+    display: inline-block;
+}

@@ -30,11 +30,13 @@ if(!defined('ABSPATH')) die(-1);
 
         <div id="pi-main-pane">
 
-            <div class="pi-focus">
+            <div class="pi-focus pie-box">
 
-                <?php if(isset($this->_items[0]->imagePath)) : ?>
+                <?php $item = $this->_items[0]; ?>
 
-                    <img src="<?php echo $this->_items[0]->imagePath; ?>" id="initialImage"
+                <?php if(isset($item->imagePath)) : ?>
+
+                    <img src="<?php echo $item->imagePath; ?>" id="initialImage"
                          width="<?php echo $this->_baseWidth; ?>" />
 
                 <?php else : ?>
@@ -49,11 +51,17 @@ if(!defined('ABSPATH')) die(-1);
 
             </div>
 
-            <div class="pi-meta">
+            <div class="pi-meta pie-box">
 
-                <h2><?php echo $this->_formatTitle($this->_items[0]->post_title); ?></h2>
+                <h2><?php echo $this->_formatTitle($item->post_title); ?></h2>
 
-                <p><?php echo apply_filters('the_content', $this->_items[0]->post_content); ?></p>
+                <div class="pi-content clearfix">
+
+                <?php echo apply_filters('the_content', $item->post_content); ?>
+
+                <?php include 'custom-fields.php'; ?>
+
+                </div>
 
             </div>
 
@@ -167,7 +175,7 @@ if(!defined('ABSPATH')) die(-1);
 
         <div id="pi-focus-<?php echo $key ?>">
 
-            <div class="pi-focus">
+            <div class="pi-focus pie-box">
 
                 <?php if(isset($item->imagePath)) : ?>
 
@@ -181,11 +189,17 @@ if(!defined('ABSPATH')) die(-1);
 
             </div>
 
-            <div class="pi-meta">
+            <div class="pi-meta pie-box">
 
                 <h2><?php echo $this->_formatTitle($item->post_title); ?></h2>
 
-                <p><?php echo apply_filters('the_content', $item->post_content); ?></p>
+                <div class="pi-content clearfix">
+
+                <?php echo apply_filters('the_content', $item->post_content); ?>
+
+                <?php include 'custom-fields.php'; ?>
+
+                </div>
 
             </div>
 

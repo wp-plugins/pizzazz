@@ -87,7 +87,7 @@ jQuery(document).ready(function ($) {
 
     };
 
-    setSliderThumbSize();
+    window.setTimeout(setSliderThumbSize, 50);
 
 });
 
@@ -95,11 +95,11 @@ jQuery(document).ready(function ($) {
 var updateFocus = function (slideId) {
     var $ = jQuery;
     var i = 0;
-    $($('#pi-main-pane div').get().reverse()).each(function (index) {
+    $($('#pi-main-pane > div').get().reverse()).each(function (index) {
         var div = $(this);
         var fadeFocusIn = function () {
             var i = 0;
-            var newSlide = $('#' + slideId + ' div');
+            var newSlide = $('#' + slideId + ' > div');
             newSlide.each(function () {
                 var myClone = $(this).clone();
                 myClone.css('display', 'none').appendTo('#pi-main-pane');

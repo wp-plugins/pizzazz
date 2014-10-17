@@ -143,6 +143,12 @@ class Item {
             array(&$this, 'displayMetaBox'),
             $this->postType
        );
+        add_meta_box('postcustom',
+            __('Custom Fields', 'pizzazz'),
+            'post_custom_meta_box',
+            null,
+            'normal',
+            'core');
     }
 
     public function displayMetaBox() {
