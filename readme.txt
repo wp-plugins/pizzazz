@@ -4,7 +4,7 @@ Donate link:
 Tags: portfolio, porfolio, portolio, web designer, clients, portfolio wordpress plugin, work, gallery, wordpress portfolio plugin, showcase, projects, images gallery, presentation, slideshow, portflio plugin wordpress
 Requires at least: 3.5
 Tested up to: 4.0.0
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,9 @@ Pizzazz is the baby of Blue Bridge Development, a web development firm based out
 3. Wordpress Portfolio plugin item.
 
 == Changelog ==
+
+= 1.2.1 =
+* Fixed error "options page not found." when saving settings
 
 = 1.2.0 =
 * Added custom fields

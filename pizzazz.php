@@ -3,7 +3,7 @@
 Plugin Name: Pizzazz
 Plugin URI: http://www.giveitpizzazz.com/
 Description: Portfolio Plugin that is a snap to setup, makes you look awesome, and builds sales.
-Version: 1.2.0
+Version: 1.2.1
 Author: Blue Bridge Development
 Author URI: http://www.bluebridgedev.com/
 License: GPLv2 or later
@@ -56,6 +56,7 @@ class Pizzazz {
     protected function _actions() {
         add_action('init', array(&$this, 'init'));
         add_action('admin_menu', array(&$this, 'adminMenu'));
+        add_action('admin_init', array(&$this, 'adminInit'));
         add_action('admin_enqueue_scripts', array(&$this, 'adminEnqueueScripts'));
         add_action('wp_enqueue_scripts', array(&$this, 'enqueueScripts'));
         add_action('do_meta_boxes', array(&$this, 'updateImageMetaBoxTitle'));

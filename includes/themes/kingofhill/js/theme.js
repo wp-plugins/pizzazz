@@ -63,8 +63,6 @@ jQuery(document).ready(function ($) {
 
         var carousel = $('div.carousel');
 
-        console.log(carousel);
-
         if(carousel.length === 0) return;
 
         var width = 0;
@@ -80,8 +78,6 @@ jQuery(document).ready(function ($) {
             height = (image.height() > height) ? image.height() : height;
 
         });
-
-        console.log(height);
 
         carousel.find('li').width(width).height(height);
 
