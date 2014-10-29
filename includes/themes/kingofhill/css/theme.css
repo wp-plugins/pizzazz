@@ -51,10 +51,6 @@ div.pi-meta {
     width: 40%;
 }
 
-div.pi-meta p {
-    margin-bottom: 0;
-}
-
 #pizzazz .pi-meta h2 {
     margin-top: 0;
     padding-top: 0;
@@ -99,7 +95,7 @@ div.pi-meta p {
     width: 35px;
     font-size: 20px;
     font-weight: bold;
-    background: url('../../../themebase/images/circle.png') 3px 13px no-repeat;
+    background: url('../../../themebase/images/circle.png') 3px 11px no-repeat;
 }
 
 .carouselControls .prev span:before, .next span:before{
@@ -188,7 +184,8 @@ div.pi-meta p {
 /* Custom Fields */
 
 .custom-row {
-    margin: 2px 0;
+    margin: 3px 0;
+    font-size: .9em;
 }
 
 .custom-row:first-of-type {
@@ -199,17 +196,21 @@ div.pi-meta p {
     float: left;
 }
 
+.pz-custom-label {
+    background-color: #F0F0F0;
+}
+
 .pz-custom-label span {
-    background: #ccc;
-    line-height: 30px;
+    line-height: 26px;
     padding: 0 15px;
     display: inline-block;
     min-width: 35px;
     text-align: center;
+    font-variant: small-caps;
 }
 
 .pz-custom-value {
-    line-height: 30px;
+    line-height: 26px;
     margin-left: 10px;
     display: inline-block;
     border-bottom: 1px dotted #ccc;

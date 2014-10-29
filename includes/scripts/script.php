@@ -2,45 +2,51 @@
 
 namespace pizzazz\includes\scripts;
 
-class Script {
-
+class Script
+{
     protected $_adminScripts;
     protected $_frontEndScripts;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->_adminScripts = $this->_loadAdminScripts();
         $this->_frontEndScripts = $this->_loadFrontEndScripts();
     }
 
-    protected function _loadAdminScripts() {
+    protected function _loadAdminScripts()
+    {
         return array(
-            'edit-pizzazz_item'             => array('\Admin\Item'),
-            'pizzazz_item'                  => array('\Admin\Item'),
-            'pizzazz_page_pizzazz_enticing' => array('\Admin\Enticing')
+            'edit-pizzazz_item'             => array('\admin\item'),
+            'pizzazz_item'                  => array('\admin\item'),
+            'pizzazz_page_pizzazz_enticing' => array('\admin\enticing'),
         );
     }
 
-    protected function _loadFrontEndScripts() {
+    protected function _loadFrontEndScripts()
+    {
         return array(
-            'king-of-hill'  => array('\FrontEnd\KingOfHill')
+            'themebase' => array('\frontend\themebase'),
+            'king-of-hill'  => array('\frontend\kingofhill')
         );
     }
 
-    public function enqueueAdmin() {
+    public function enqueueAdmin()
+    {
         $screen = get_current_screen();
-        if( ! isset( $this->_adminScripts[$screen->id] ) ) return false;
-        $this->_enqueueScripts( $this->_adminScripts[$screen->id] );
+        if(!isset($this->_adminScripts[$screen->id])) return false;
+        $this->_enqueueScripts($this->_adminScripts[$screen->id]);
     }
 
-    public function enqueueFrontEnd() {
-        foreach ( $this->_frontEndScripts as $scripts ) {
-            $this->_enqueueScripts( $scripts );
+    public function enqueueFrontEnd()
+    {
+        foreach($this->_frontEndScripts as $scripts){
+            $this->_enqueueScripts($scripts);
         }
     }
 
     protected function _enqueueScripts($scripts) {
-        foreach ( $scripts as $script ){
-            $scriptObject = $this->_loadScript( $script );
+        foreach($scripts as $script){
+            $scriptObject = $this->_loadScript($script);
             $scriptObject->enqueue();
         }
     }

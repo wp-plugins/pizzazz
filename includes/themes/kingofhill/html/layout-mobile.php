@@ -1,8 +1,13 @@
 <?php
 
 if(!defined('ABSPATH')) die(-1);
+
+use pizzazz\includes\themebase\classes\FocusImage;
+
 ?>
 <div id="pizzazz" class="mobile">
+
+    <?php if ($this->options->share) include 'social.php'; ?>
 
     <?php foreach($this->_items as $key => $item) : ?>
 
@@ -12,17 +17,8 @@ if(!defined('ABSPATH')) die(-1);
 
                 <div class="pi-focus">
 
-                    <?php if(isset($item->imagePath)) : ?>
-
-                        <img src="<?php echo $item->imagePath; ?>"
-                             width="<?php echo $this->_baseWidth; ?>"
-                            <?php if($key === 0) echo ' id="initialImage"'; ?>/>
-
-                    <?php else : ?>
-
-                        <span class="pi-notice"><?php echo __('No image available', 'pizzazz'); ?></span>
-
-                    <?php endif; ?>
+                    <?php echo new FocusImage($item,
+                        array('width' => $this->_baseWidth, 'id' => 'initialImage', 'mobile' => true)); ?>
 
                 </div>
 

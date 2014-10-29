@@ -2,22 +2,23 @@
 
 namespace pizzazz\includes\customposts;
 
-class Item {
+use pizzazz\includes\postmeta;
+
+class PortfolioItem
+{
+    CONST POST_TYPE = 'pizzazz_item';
 
     protected $arguments = array();
-    protected $postType = 'pizzazz_item';
 
-    public function getPostType() {
-        return $this->postType;
-    }
-
-    public function register() {
+    public function register()
+    {
         $this->_loadArguments();
-        register_post_type($this->postType, $this->arguments);
-        remove_post_type_support($this->postType, 'media');
+        register_post_type(static::POST_TYPE, $this->arguments);
+        remove_post_type_support(static::POST_TYPE, 'media');
     }
 
-    protected function _loadArguments() {
+    protected function _loadArguments()
+    {
         $this->arguments = array(
             'labels'        => $this->_getLabels(),
             'public'        => true,
@@ -26,7 +27,8 @@ class Item {
         );
     }
 
-    protected function _getLabels() {
+    protected function _getLabels()
+    {
         return array(
             'name'                  => __('Portfolio Items', 'pizzazz'),
             'singular_name'         => __('Item', 'pizzazz'),
@@ -42,7 +44,8 @@ class Item {
         );
     }
 
-    public function addColumns($columns) {
+    public function addColumns($columns)
+    {
         $columns = array(
             'cb'        => '<input type="checkbox" />',
             'order'     => 'Order',
@@ -53,7 +56,8 @@ class Item {
         return $columns;
     }
 
-    public function fillColumn($column, $postId) {
+    public function fillColumn($column, $postId)
+    {
         $columns = array(
             'thumbnail' => '_loadThumbnailColumn',
             'order'     => '_loadOrderFieldColumn'
@@ -62,7 +66,8 @@ class Item {
         $this->{$columns[$column]}($postId);
     }
 
-    protected function _loadThumbnailColumn($postId) {
+    protected function _loadThumbnailColumn($postId)
+    {
         if(!$imageId = get_post_meta($postId, '_thumbnail_id', true)) return;
         $imagePath = get_post_meta($imageId, '_wp_attached_file', true);
         $dir = wp_upload_dir();
@@ -70,18 +75,21 @@ class Item {
         echo '<img src="' . $upload . $imagePath . '" />';
     }
 
-    protected function _loadOrderFieldColumn($postId) {
+    protected function _loadOrderFieldColumn($postId)
+    {
         $meta = $this->load($postId);
         echo '<input type="text" name="order[]" value="' . $meta['order'] . '" />';
     }
 
-    public function addSorting($columns) {
+    public function addSorting($columns)
+    {
         $custom = array('order' => 'order');
         return wp_parse_args($custom, $columns);
     }
 
-    public function orderListRows($vars) {
-        if($vars['post_type'] !== $this->postType || (isset($vars['orderby']) && $vars['orderby'] !== 'order')) return $vars;
+    public function orderListRows($vars)
+    {
+        if($vars['post_type'] !== static::POST_TYPE || (isset($vars['orderby']) && $vars['orderby'] !== 'order')) return $vars;
         $orderVars = array(
             'meta_key'  => '_pizzazz_item_order',
             'orderby'   => 'meta_value_num'
@@ -90,17 +98,23 @@ class Item {
         return array_merge($vars, $orderVars);
     }
 
-    public function getItems($termId = false, $taxonomy = false) {
+    public function getItems($termId = false, $taxonomy = false)
+    {
         $items = $this->_loadItems($termId, $taxonomy);
-        foreach ($items as $key => $item) {
-            $this->_addImagePathsToItem($item);
+        $video = new postmeta\PortfolioItemVideo();
+        foreach ($items as &$item) {
+            $item = $this->_addImagePathsToItem($item);
+            $videoUrl = $video->load($item->ID);
+            $item->videoUrl = ($videoUrl !== '') ? $videoUrl : false;
         }
+        unset($item);
         return $items;
     }
 
-    protected function _loadItems() {
+    protected function _loadItems()
+    {
         $arguments = array(
-            'post_type'         => $this->postType,
+            'post_type'         => static::POST_TYPE,
             'posts_per_page'    => '-1',
             'meta_key'          => '_pizzazz_item_order',
             'orderby'           => 'meta_value_num',
@@ -110,8 +124,9 @@ class Item {
         return $itemsQuery->get_posts();
     }
 
-    protected function _addImagePathsToItem(&$item) {
-        if(! $imageId = get_post_meta($item->ID, '_thumbnail_id', true)) return false;
+    protected function _addImagePathsToItem($item)
+    {
+        if(!$imageId = get_post_meta($item->ID, '_thumbnail_id', true)) return $item;
         $attachmentMeta = get_post_meta($imageId, '_wp_attachment_metadata', true);
         $dir = wp_upload_dir();
         $upload = trailingslashit($dir['baseurl']);
@@ -120,55 +135,65 @@ class Item {
         $item->thumbnailPath = $upload . $thumbnail;
         $item->thumbnailWidth = $attachmentMeta['sizes']['thumbnail']['width'];
         $item->thumbnailHeight = $attachmentMeta['sizes']['thumbnail']['height'];
-        return true;
+        return $item;
     }
 
-    public function addImageMetaBox() {
+    public function addImageMetaBox()
+    {
         $screen = get_current_screen();
-        if ($screen->post_type !== $this->postType) return;
+        if($screen->post_type !== static::POST_TYPE) return;
         remove_meta_box('postimagediv', 'custom_post_type', 'side');
         add_meta_box(
             'postimagediv',
             __('Portfolio Image', 'pizzazz'),
             'post_thumbnail_meta_box',
-            $this->postType,
+            static::POST_TYPE,
             'side',
             'high');
     }
 
-    public function addMetaBoxes() {
+    public function addMetaBoxes()
+    {
         add_meta_box(
             'orderdiv',
             __('Item Order', 'pizzazz'),
             array(&$this, 'displayMetaBox'),
-            $this->postType
+            static::POST_TYPE
        );
-        add_meta_box('postcustom',
+        add_meta_box(
+            'postcustom',
             __('Custom Fields', 'pizzazz'),
             'post_custom_meta_box',
             null,
             'normal',
             'core');
+        postmeta\PortfolioItemVideo::add();
     }
 
-    public function displayMetaBox() {
+    public function displayMetaBox()
+    {
         $itemId = get_the_ID();
         $this->meta = $this->load($itemId);
         include_once('html/ordermeta.php');
     }
 
-    public function load($itemId) {
+    public function load($itemId)
+    {
         $meta = array();
         $meta['order'] = get_post_meta($itemId, '_pizzazz_item_order', true);
         return $meta;
     }
 
-    public function save($itemId) {
+    public function save($itemId)
+    {
         $order = ($_POST['pizzazz_order']) ? $_POST['pizzazz_order'] : count($this->getItems()) + 1;
         update_post_meta($itemId, '_pizzazz_item_order', $order);
+        $video = new postmeta\PortfolioItemVideo();
+        $video->save($itemId);
     }
 
-    public function saveOrder() {
+    public function saveOrder()
+    {
         if(!$this->_beforeSaveOrder()) {
             return;
         }
@@ -181,9 +206,10 @@ class Item {
         $this->_redirect($postIds);
     }
 
-    protected function _beforeSaveOrder() {
+    protected function _beforeSaveOrder()
+    {
         global $typenow;
-        if($typenow !== $this->postType) return false;
+        if($typenow !== static::POST_TYPE) return false;
         $wp_list_table = _get_list_table('WP_Posts_List_Table');
         $action = $wp_list_table->current_action();
         if($action != 'saveOrder') return false;
@@ -192,7 +218,8 @@ class Item {
         return true;
     }
 
-    protected function _redirect($postIds) {
+    protected function _redirect($postIds)
+    {
         $sendback = remove_query_arg(
             array(
                 'orderSaved',
@@ -211,7 +238,7 @@ class Item {
             ),
             wp_get_referer()
        );
-        if(! $sendback) $sendback = admin_url('edit.php?post_type=' . $this->postType);
+        if(! $sendback) $sendback = admin_url('edit.php?post_type=' . static::POST_TYPE);
         $wp_list_table = _get_list_table('WP_Posts_List_Table');
         $sendback = add_query_arg(
             array(
@@ -224,7 +251,8 @@ class Item {
         exit();
     }
 
-    protected function _displayError() {
+    protected function _displayError()
+    {
         $title = __('WordPress Failure Notice');
         $html = __('Error loading order values.', 'pizzazz');
         if (wp_get_referer()) {
@@ -234,9 +262,10 @@ class Item {
         wp_die($html, $title, array('response' => 403));
     }
 
-    public function saveOrderNotice() {
+    public function saveOrderNotice()
+    {
         global $post_type, $pagenow;
-        if ($pagenow != 'edit.php' || $post_type != $this->postType ||
+        if ($pagenow != 'edit.php' || $post_type != static::POST_TYPE ||
             ! isset($_REQUEST['orderSaved']) || (int) !$_REQUEST['orderSaved']) {
             return;
         }
@@ -247,9 +276,10 @@ class Item {
         echo "<div class=\"updated\"><p>{$message}</p></div>";
     }
 
-    public function addItemListHeader() {
+    public function addItemListHeader()
+    {
         global $post_type, $pagenow;
-        if ($post_type !== $this->postType || $pagenow !== 'edit.php' ||
+        if ($post_type !== static::POST_TYPE || $pagenow !== 'edit.php' ||
             (isset($_REQUEST['post_status']) && $_REQUEST['post_status'] === 'trash')
         ) {
             return;

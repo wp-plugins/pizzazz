@@ -60,30 +60,35 @@ jQuery(document).ready(function ($) {
     gplus();
 
     var setSliderThumbSize = function(){
-
         var carousel = $('div.carousel');
-
         if(carousel.length === 0) return;
-
         var width = 0;
-
         var height = 0;
-
         carousel.find('li').each(function(){
-
             var image = $(this).find('img');
-
             width = (image.width() > width) ? image.width() : width;
-
             height = (image.height() > height) ? image.height() : height;
-
         });
-
-        carousel.find('li').width(width).height(height);
-
+        carousel.find('li').width(width).height(height)
+            .find('a').width(width).height(height);
     };
 
     window.setTimeout(setSliderThumbSize, 50);
+
+    var setCustomFieldSize = function(){
+        var customLabel = $('.pz-custom-label');
+        customLabel.css('min-width', 0);
+        var minWidth = 0;
+        customLabel.each(function(){
+            var width = $(this).width();
+            if(width > minWidth){
+                minWidth = width;
+            }
+        });
+        customLabel.css('min-width', minWidth + 5);
+    };
+
+    setCustomFieldSize();
 
 });
 
@@ -117,3 +122,57 @@ var updateFocus = function (slideId) {
         i += 300;
     });
 };
+
+var launchFeatherLight = function(id){
+    var $ = jQuery;
+    $(id).width('640');
+    $(id).height('360');
+    $.featherlight($(id), { closeIcon: ''});
+};
+
+jQuery(document).ready(function ($) {
+
+    var width = $('div.pi-container').width();
+
+    var thumbs = 5;
+    if (width < 935) {
+        thumbs = 4;
+    }
+    if (width < 800) {
+        thumbs = 3;
+    }
+
+    var thumbsCount = $('.carousel li').length;
+
+    if(thumbsCount < thumbs) {
+        $('#carouselControlsAbove').hide();
+        $('.carouselControls').hide();
+        $(".carousel").jCarouselLite({
+            btnNext: "",
+            btnPrev: "",
+            circular: false,
+            visible: thumbsCount
+        });
+    } else {
+        $('#carouselControlsAbove').show();
+        $('.carouselControls').show();
+        $(".carousel").jCarouselLite({
+            btnNext: ".next",
+            btnPrev: ".prev",
+            visible: thumbs
+        });
+    }
+
+    var centerCarousel = function(){
+        var totalWidth = 0;
+        $('.carousel').each(function(){
+            totalWidth += $(this).width();
+        });
+        if(totalWidth !== 0) {
+            $('#carouselWrapper').css('width', totalWidth);
+        }
+    };
+
+    centerCarousel();
+
+});

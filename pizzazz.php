@@ -3,7 +3,7 @@
 Plugin Name: Pizzazz
 Plugin URI: http://www.giveitpizzazz.com/
 Description: Portfolio Plugin that is a snap to setup, makes you look awesome, and builds sales.
-Version: 1.2.1
+Version: 1.3.0
 Author: Blue Bridge Development
 Author URI: http://www.bluebridgedev.com/
 License: GPLv2 or later
@@ -27,8 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace pizzazz;
 
+use pizzazz\includes\Activation;
 use pizzazz\includes\shortcode\Shortcode;
-use pizzazz\includes\customPosts\Item;
+use pizzazz\includes\customPosts\PortfolioItem;
 use pizzazz\includes\menu\Menu;
 use pizzazz\includes\scripts\Script;
 
@@ -39,6 +40,7 @@ if(!class_exists('uagent_info')) require_once PIZZAZZ_INCLUDES_PATH . 'mdetect.p
 class Pizzazz {
 
     static public function isMobile() {
+        if(get_option('pizzazz_force_mobile')) return true;
         $mobileDetect = new \uagent_info();
         $isMobile = $mobileDetect->DetectMobileQuick();
         return $isMobile;
@@ -50,7 +52,10 @@ class Pizzazz {
     }
 
     protected function _activationHooks() {
-        register_activation_hook(__FILE__, array(&$this, 'activate'));
+        $activation = new Activation();
+        register_activation_hook(__FILE__, array(&$activation, 'activate'));
+        register_deactivation_hook(__FILE__, array(&$activation, 'deactivate'));
+        register_uninstall_hook(__FILE__, array('\pizzazz\includes\Activation', 'uninstall'));
     }
 
     protected function _actions() {
@@ -77,7 +82,7 @@ class Pizzazz {
         add_action('manage_pizzazz_item_posts_custom_column', array(&$this, 'fillColumn'), 10, 2);
         add_filter('manage_edit-pizzazz_item_sortable_columns', array(&$this, 'addColumnSorting'));
         add_filter('request', array(&$this, 'orderByColumn'));
-        $item = new Item();
+        $item = new PortfolioItem();
         $item->register();
     }
 
@@ -88,6 +93,7 @@ class Pizzazz {
 
     public function adminInit() {
         register_setting('pizzazz-options', 'pizzazz_show_social_share');
+        register_setting('pizzazz-options', 'pizzazz_force_mobile');
     }
 
     public function adminEnqueueScripts() {
@@ -101,56 +107,57 @@ class Pizzazz {
     }
 
     public function addColumns($columns) {
-        $item = new Item();
+        $item = new PortfolioItem();
         return $item->addColumns($columns);
     }
 
     public function fillColumn($column, $postId) {
-        $item = new Item();
+        $item = new PortfolioItem();
         $item->fillColumn($column, $postId);
     }
 
     public function addColumnSorting($columns) {
-        $item = new Item();
+        $item = new PortfolioItem();
         return $item->addSorting($columns);
     }
 
     public function orderByColumn($vars) {
         if(!$vars || !isset($vars['post_type'])) return $vars;
-        $item = new Item();
+        $item = new PortfolioItem();
         return $item->orderListRows($vars);
     }
 
     public function updateImageMetaBoxTitle() {
-        $item = new Item();
+        $item = new PortfolioItem();
         $item->addImageMetaBox();
     }
 
     public function addMetaBoxes() {
-        $item = new Item();
+        $item = new PortfolioItem();
         $item->addMetaBoxes();
     }
 
     public function savePost($id) {
         if((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)) return;
-        $item = new Item();
-        if(!isset($_POST['action']) || $_POST['action'] !== 'editpost' || $_POST['post_type'] !== $item->getPostType()){
+        if(!isset($_POST['action']) || $_POST['action'] !== 'editpost' || $_POST['post_type'] !== PortfolioItem::POST_TYPE){
             return;
         }
         check_admin_referer($_POST['action'], 'pizzazz_order_nonce');
+        $item = new PortfolioItem();
         $item->save($id);
     }
 
     public function bulkAction() {
         if(!isset($_REQUEST['mode'])) $_REQUEST['mode'] = 'excerpt';
-        $item = new Item();
+        $item = new PortfolioItem();
         $item->saveOrder();
     }
 
     public function adminNotices() {
-        $item = new Item();
+        $item = new PortfolioItem();
         $item->addItemListHeader();
         $item->saveOrderNotice();
+        Activation::displayMessage();
     }
 
     function displayShortcode($atts, $content, $tag) {

@@ -2,13 +2,13 @@
 Contributors: bluebridge
 Donate link:
 Tags: portfolio, porfolio, portolio, web designer, clients, portfolio wordpress plugin, work, gallery, wordpress portfolio plugin, showcase, projects, images gallery, presentation, slideshow, portflio plugin wordpress
-Requires at least: 3.5
+Requires at least: 3.8
 Tested up to: 4.0.0
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Super Easy | Responsive | 1 Page Display
+Super Easy | Mobile Friendly | 1 Page Display
 
 == Description ==
 
@@ -19,7 +19,8 @@ Pizzazz is a simple WordPress portfolio plugin that helps you to engage your aud
 > #### **Free Version Features**
 
 > * 1 page design.  No page loads keeps your audience's attention and browsing your work.
-> * Responsive. Your portfolio will flatten out to display cleanly on mobile devices and normally on viewer's Droid tablets and iPads.
+> * Mobile friendly. Your portfolio will detect mobile phones and flatten out to display cleanly, loading less resources and optimizing for those screens. You can preview the mobile view by flipping a switch in "Settings."
+> * Video Integration.  Simply add a video link to Vimeo or YouTube to turn a focus image into a video launcher.
 > * Share icon functionality integrated.
 > * Custom fields.
 > * Intuitive Interface. Pizzazz uses the same interface as WordPress categories and posts, so it's easy to figure out what goes where.
@@ -91,6 +92,9 @@ Pizzazz is the baby of Blue Bridge Development, a web development firm based out
 3. Wordpress Portfolio plugin item.
 
 == Changelog ==
+
+= 1.3.0 =
+* Added video portfolio items
 
 = 1.2.1 =
 * Fixed error "options page not found." when saving settings

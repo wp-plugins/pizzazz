@@ -6,3 +6,7 @@ td.column-thumbnail img {width: 100%;}
 #orderdiv {display: none;}
 
 #wpbody .survey-link {border: 1px solid #2EA2CC; box-shadow: none;}
+
+input[name="videoUrl"] {
+    width: 100%;
+}

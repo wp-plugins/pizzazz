@@ -27,6 +27,22 @@
                 </td>
             </tr>
 
+            <tr>
+                <th>Force mobile layout</th>
+                <td>
+
+                    <label><input type="radio" name="pizzazz_force_mobile" value="1"
+                            <?php if (intval(get_option('pizzazz_force_mobile'))) echo 'checked="checked"'; ?>/>
+                        <span>Yes</span></label>
+
+                    <label><input type="radio" name="pizzazz_force_mobile" value="0"
+                            <?php if (!intval(get_option('pizzazz_force_mobile'))) echo 'checked="checked"'; ?>/>
+                        <span>No</span></label>
+                    <p class="description">For testing only</p>
+
+                </td>
+            </tr>
+
             </tbody>
 
         </table>
@@ -38,7 +54,7 @@
 
                     <img src="<?php echo plugins_url(); ?>/pizzazz/assets/images/premiumSettings.png" width="527"/>
 <br /><br />
-        <a href="http://giveitpizzazz.com/portfolio-plugin-wordpress?utm_source=Free%20Plugin%20Settings&utm_medium=copy&utm_campaign=plugin" class="button-primary">Take the Tour</a>
+        <a href="http://giveitpizzazz.com/portfolio-plugin-wordpress?utm_source=Free%20Plugin%20Settings&utm_medium=copy&utm_campaign=plugin" class="button-primary">Take the Tour &rarr;</a>
 
 
 </div>

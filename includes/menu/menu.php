@@ -8,6 +8,7 @@ class Menu {
     {
         $this->_addPortfoliosPage();
         $this->_addSettingsPage();
+        $this->_addBugPage();
         $this->_addEnticingPage();
     }
 
@@ -37,8 +38,8 @@ class Menu {
     {
         add_submenu_page(
             'pizzazz_portfolios',
-            'Entice Your Viewers',
-            'Entice',
+            'Free Mini-Course',
+            'Free Mini-Course',
             "manage_options",
             'pizzazz_enticing',
             array(&$this, 'displayEnticingPage')
@@ -48,5 +49,22 @@ class Menu {
     public function displayEnticingPage()
     {
         include(PIZZAZZ_INCLUDES_PATH . 'menu/html/enticing.php');
+    }
+
+    protected function _addBugPage()
+    {
+            add_submenu_page(
+                'pizzazz_portfolios',
+                'How To Report a Bug',
+                'Report a Bug',
+                "manage_options",
+                'pizzazz_bug',
+                array(&$this, 'displayBugPage')
+            );
+    }
+
+    public function displayBugPage()
+    {
+        include(PIZZAZZ_INCLUDES_PATH . 'menu/html/bug.php');
     }
 }

@@ -2,12 +2,10 @@
 
 namespace pizzazz\includes\scripts\frontend;
 
-use pizzazz\Pizzazz;
-
-class KingOfHill {
-
+class KingOfHill
+{
     public function enqueue() {
-        wp_enqueue_style( 'pizzazz-kingofthehill-css',
+        wp_enqueue_style( 'pizzazz-kingofthehill',
             plugins_url() . '/pizzazz/includes/themes/kingofhill/css/theme.css',
             null,
             null,
