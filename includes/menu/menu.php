@@ -38,8 +38,8 @@ class Menu {
     {
         add_submenu_page(
             'pizzazz_portfolios',
-            'Free Mini-Course',
-            'Free Mini-Course',
+            'Premium for Free',
+            'Premium for Free',
             "manage_options",
             'pizzazz_enticing',
             array(&$this, 'displayEnticingPage')

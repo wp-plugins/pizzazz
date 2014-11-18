@@ -1,20 +1,20 @@
 === Pizzazz Portfolio Plugin ===
 Contributors: bluebridge
 Donate link:
-Tags: portfolio, porfolio, portolio, web designer, clients, portfolio wordpress plugin, work, gallery, wordpress portfolio plugin, showcase, projects, images gallery, presentation, slideshow, portflio plugin wordpress
+Tags: portfolio, porfolio, portolio, web designer, clients, portfolio wordpress plugin, work, gallery, wordpress portfolio plugin, showcase, projects, images gallery, presentation, slideshow, portflio plugin wordpress, best gallery plugin, best portfolio plugin, carousel, content slider, custom fields, filterable gallery, filterable portfolio, foto, free gallery, free photo gallery, galeri, galerie, Galleria, galleries, gallery, gallery description, gallery lightbox, gallery shortcode, gallery slider, grid, image, image album, image description, image display, image gallery plugin, image lightbox, Image Rotator, image-size, images, images gallery, iphone gallery, jquery gallery, jquery portfolio, lightbox, lightbox photo, media, multiple pictures, nextgen, nextgen gallery, photo, photo album, photo albums, photo gallery, Photo Slider, photoalbum, photogallery, photography, photos, photoset, picture, Picture Gallery, picture portfolio, pictures, plugin, plugins, png, portfolio, portfolio gallery, portfolios, Post, posts slider, Pretty Photo, prettyphoto, project, responsive, responsive slider, responsive slideshow, screenshot, screenshots, seo, shortcode, Simple gallery, slide, slide show, slider, slider plugin, slider widget, sliders, slides, slideshow manager, slideshow plugin, sortable portfolio, thumbnail, thumbnails, thumbs, view images, visual items, web designer, website gallery, widget, widget gallery, widget portfolio, widget slider, widget slideshow, widgets, wordpress gallery, wordpress gallery plugin, wordpress portfolio, wordpress slider, wordpress slideshow, wp gallery, wp gallery plugins, wp slider, presentation plugin, wp portfolio plugin
 Requires at least: 3.8
 Tested up to: 4.0.0
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Super Easy | Mobile Friendly | 1 Page Display
+A simple responsive portfolio that's easy for you to manage and has great support.
 
 == Description ==
 
-<p>http://www.youtube.com/watch?v=HEeHAmyDH6c</p>
+<p>http://www.youtube.com/watch?v=xNg7s1Vj5z8</p>
 
-Pizzazz is a simple WordPress portfolio plugin that helps you to engage your audience and land more work by displaying your abilities in a clean, 1 page, image based, portfolio.  This approach is important because research has shown that having to wait for a new page to load to get additional information worsens your visitors' experience and increases the chances of them leaving your site without contacting you.  Check out some of its features below:
+Pizzazz is a simple WordPress portfolio plugin that helps you to engage your audience by displaying your work in a clean, 1 page, image based, portfolio.  This approach is important because research has shown that having to wait for a new page to load to get additional information worsens your visitors' experience and increases the chances of them leaving your site without contacting you.  Check out some of its features below:
 
 > #### **Free Version Features**
 
@@ -22,7 +22,8 @@ Pizzazz is a simple WordPress portfolio plugin that helps you to engage your aud
 > * Mobile friendly. Your portfolio will detect mobile phones and flatten out to display cleanly, loading less resources and optimizing for those screens. You can preview the mobile view by flipping a switch in "Settings."
 > * Video Integration.  Simply add a video link to Vimeo or YouTube to turn a focus image into a video launcher.
 > * Share icon functionality integrated.
-> * Custom fields.
+> * Custom fields.  Call out specific elements of a portfolio item (e.g. "Year", "Type", "Market", etc.).
+> * Compact display of unlimited items.
 > * Intuitive Interface. Pizzazz uses the same interface as WordPress categories and posts, so it's easy to figure out what goes where.
 > * Use HTML elements like lists, images, and links in your item descriptions.
 > * Width sensitive.  Depending on the width of your content area, Pizzazz will adjust the display of items to keep things looking clean even when there isn't much room to do so.
@@ -31,7 +32,7 @@ Pizzazz is a simple WordPress portfolio plugin that helps you to engage your aud
 = What's in the Commercial Version? =
 
 * Categories
-* Call to action buttons
+* Call to action buttons&mdash; link to case studies, contact us, PDF's... whatever you want.
 * Color themes
 * Alternate laptop theme
 * Support! Boring, but great to have. :)
@@ -92,6 +93,12 @@ Pizzazz is the baby of Blue Bridge Development, a web development firm based out
 3. Wordpress Portfolio plugin item.
 
 == Changelog ==
+
+= 1.3.1 =
+* Fixed JS and css bugs for thumbnails and transition "flash".
+* Tweaked hover effect for video linked images.
+* Fixed custom field width variations.
+* Minified Carousel code.
 
 = 1.3.0 =
 * Added video portfolio items

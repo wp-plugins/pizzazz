@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
+    min-height: 700px;
 }
 
 #pizzazz a {
@@ -222,4 +223,9 @@ div.pi-meta {
 
 .pz-custom-label-container {
     display: inline-block;
+}
+
+/* Video */
+.pi-video-connector:hover img {
+    opacity: .9;
 }
