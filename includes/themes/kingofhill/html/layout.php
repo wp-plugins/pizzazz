@@ -1,30 +1,14 @@
 <?php
 
 if(!defined('ABSPATH')) die(-1);
+
+use pizzazz\Pizzazz;
+use pizzazz\includes\media\VideoLoader;
+use pizzazz\includes\themebase\classes\FocusImage;
 ?>
 <div id="pizzazz">
 
-    <?php if ($this->options->share ) : ?>
-
-        <div class="pi-social">
-
-            <span class="twitter">
-                <a href="http://twitter.com/share"
-                   class="twitter-share-button"
-                   data-url="<?php the_permalink(); ?>">Tweet</a>
-            </span>
-
-            <span class="facebook">
-                <div class="fb-share-button" data-href="<?php the_permalink(); ?>" data-type="button_count"></div>
-            </span>
-
-            <span class="google">
-                <g:plusone size="medium" href="<?php the_permalink(); ?>"></g:plusone>
-            </span>
-
-        </div>
-
-    <?php endif; ?>
+    <?php if ($this->options->share) include 'social.php'; ?>
 
     <div class="pi-container clearfix">
 
@@ -34,20 +18,10 @@ if(!defined('ABSPATH')) die(-1);
 
                 <?php $item = $this->_items[0]; ?>
 
-                <?php if(isset($item->imagePath)) : ?>
-
-                    <img src="<?php echo $item->imagePath; ?>" id="initialImage"
-                         width="<?php echo $this->_baseWidth; ?>" />
-
-                <?php else : ?>
-
-                    <span class="pi-notice" style="width: <?php echo $this->_baseWidth; ?>">
-
-                        <?php echo __('No image available', 'pizzazz'); ?>
-
-                    </span>
-
-                <?php endif; ?>
+                <?php echo new FocusImage($item, array( 'width' => $this->_baseWidth,
+                    'id' => 'initialImage',
+                    'mobile' => Pizzazz::isMobile()
+                )); ?>
 
             </div>
 
@@ -57,9 +31,9 @@ if(!defined('ABSPATH')) die(-1);
 
                 <div class="pi-content clearfix">
 
-                <?php echo apply_filters('the_content', $item->post_content); ?>
+                    <?php echo apply_filters('the_content', $item->post_content); ?>
 
-                <?php include 'custom-fields.php'; ?>
+                    <?php include 'custom-fields.php'; ?>
 
                 </div>
 
@@ -89,11 +63,12 @@ if(!defined('ABSPATH')) die(-1);
                             <li>
 
                                 <a href="javascript:updateFocus('pi-focus-<?php echo $key ?>');">
+
                                     <img src="<?php echo $item->thumbnailPath; ?>"
                                          width="<?php echo $this->_thumbnailWidth; ?>"
                                          height="<?php echo $this->_thumbnailHeight; ?>"
                                          class="pi-thumb"
-                                        <?php if(!isset($this->item->thumbnailPath)) printf('alt="%s"',
+                                        <?php if (!isset($this->item->thumbnailPath)) printf('alt="%s"',
                                             __('no image available', 'pizzazz')); ?>
                                         />
                                 </a>
@@ -118,58 +93,11 @@ if(!defined('ABSPATH')) die(-1);
 
     </div>
 
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-
-            var width = $('div.pi-container').width();
-
-            var thumbs = 5;
-            if (width < 935) {
-                thumbs = 4;
-            }
-            if (width < 800) {
-                thumbs = 3;
-            }
-
-            var thumbsCount = $('.carousel li').length;
-
-            if(thumbsCount < thumbs) {
-                $('#carouselControlsAbove').hide();
-                $('.carouselControls').hide();
-                $(".carousel").jCarouselLite({
-                    btnNext: "",
-                    btnPrev: "",
-                    circular: false,
-                    visible: thumbsCount
-                });
-            } else {
-                $('#carouselControlsAbove').show();
-                $('.carouselControls').show();
-                $(".carousel").jCarouselLite({
-                    btnNext: ".next",
-                    btnPrev: ".prev",
-                    visible: thumbs
-                });
-            }
-
-            var centerCarousel = function(){
-                var totalWidth = 0;
-                $('.carousel').each(function(){
-                    totalWidth += $(this).width();
-                });
-                if(totalWidth !== 0) {
-                    $('#carouselWrapper').css('width', totalWidth);
-                }
-            };
-
-            centerCarousel();
-
-        });
-    </script>
-
 </div>
 
 <div id="pi-items" class="pi-hide">
+
+    <?php $videos = array(); ?>
 
     <?php foreach($this->_items as $key => $item) : ?>
 
@@ -177,15 +105,9 @@ if(!defined('ABSPATH')) die(-1);
 
             <div class="pi-focus pie-box">
 
-                <?php if(isset($item->imagePath)) : ?>
-
-                    <img src="<?php echo $item->imagePath; ?>" width="<?php echo $this->_baseWidth; ?>"/>
-
-                <?php else : ?>
-
-                    <span class="pi-notice"><?php echo __('No image available', 'pizzazz'); ?></span>
-
-                <?php endif; ?>
+                <?php echo new FocusImage($item, array( 'width' => $this->_baseWidth,
+                    'mobile' => Pizzazz::isMobile()
+                )); ?>
 
             </div>
 
@@ -195,15 +117,31 @@ if(!defined('ABSPATH')) die(-1);
 
                 <div class="pi-content clearfix">
 
-                <?php echo apply_filters('the_content', $item->post_content); ?>
+                    <?php echo apply_filters('the_content', $item->post_content); ?>
 
-                <?php include 'custom-fields.php'; ?>
+                    <?php include 'custom-fields.php'; ?>
 
                 </div>
 
             </div>
 
         </div>
+
+        <?php if($item->videoUrl) : ?>
+
+            <?php $videos[] = $item; ?>
+
+        <?php endif; ?>
+
+    <?php endforeach; ?>
+
+</div>
+
+<div id="loaded" style="display: none;">
+
+    <?php foreach($videos as $item): ?>
+
+        <?php echo VideoLoader::getEmbedCode($item); ?>
 
     <?php endforeach; ?>
 

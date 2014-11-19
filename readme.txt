@@ -4,7 +4,7 @@ Donate link:
 Tags: portfolio, porfolio, portolio, web designer, clients, portfolio wordpress plugin, work, gallery, wordpress portfolio plugin, showcase, projects, images gallery, presentation, slideshow, portflio plugin wordpress, best gallery plugin, best portfolio plugin, carousel, content slider, custom fields, filterable gallery, filterable portfolio, foto, free gallery, free photo gallery, galeri, galerie, Galleria, galleries, gallery, gallery description, gallery lightbox, gallery shortcode, gallery slider, grid, image, image album, image description, image display, image gallery plugin, image lightbox, Image Rotator, image-size, images, images gallery, iphone gallery, jquery gallery, jquery portfolio, lightbox, lightbox photo, media, multiple pictures, nextgen, nextgen gallery, photo, photo album, photo albums, photo gallery, Photo Slider, photoalbum, photogallery, photography, photos, photoset, picture, Picture Gallery, picture portfolio, pictures, plugin, plugins, png, portfolio, portfolio gallery, portfolios, Post, posts slider, Pretty Photo, prettyphoto, project, responsive, responsive slider, responsive slideshow, screenshot, screenshots, seo, shortcode, Simple gallery, slide, slide show, slider, slider plugin, slider widget, sliders, slides, slideshow manager, slideshow plugin, sortable portfolio, thumbnail, thumbnails, thumbs, view images, visual items, web designer, website gallery, widget, widget gallery, widget portfolio, widget slider, widget slideshow, widgets, wordpress gallery, wordpress gallery plugin, wordpress portfolio, wordpress slider, wordpress slideshow, wp gallery, wp gallery plugins, wp slider, presentation plugin, wp portfolio plugin
 Requires at least: 3.8
 Tested up to: 4.0.0
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,9 @@ Pizzazz is the baby of Blue Bridge Development, a web development firm based out
 3. Wordpress Portfolio plugin item.
 
 == Changelog ==
+
+= 1.3.2 =
+* Updated theme layout.
 
 = 1.3.1 =
 * Fixed JS and css bugs for thumbnails and transition "flash".
