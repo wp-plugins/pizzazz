@@ -1,5 +1,11 @@
-<?php if (!defined('ABSPATH')) die(-1); ?>
+<?php
 
+if (!defined('ABSPATH')) die(-1);
+
+if (!intval(get_option('pizzazz_show_custom_fields')))
+    return;
+
+?>
 <?php if ($meta = get_post_meta($item->ID)): ?>
 
     <?php $triggered = false; ?>

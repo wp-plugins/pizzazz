@@ -28,6 +28,21 @@
             </tr>
 
             <tr>
+                <th>Show custom fields</th>
+                <td>
+
+                    <label><input type="radio" name="pizzazz_show_custom_fields" value="1"
+                            <?php if (intval(get_option('pizzazz_show_custom_fields'))) echo 'checked="checked"'; ?>/>
+                        <span>Yes</span></label>
+
+                    <label><input type="radio" name="pizzazz_show_custom_fields" value="0"
+                            <?php if (!intval(get_option('pizzazz_show_custom_fields'))) echo 'checked="checked"'; ?>/>
+                        <span>No</span></label>
+
+                </td>
+            </tr>
+
+            <tr>
                 <th>Force mobile layout</th>
                 <td>
 

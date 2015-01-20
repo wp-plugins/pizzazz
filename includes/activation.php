@@ -6,10 +6,11 @@ class Activation
 {
     public function activate()
     {
-        if(!current_user_can('activate_plugins')) return;
+        if (!current_user_can('activate_plugins')) return;
         $this->_checkAdminReferrer('activate');
         update_option('pizzazz_version_number', PIZZAZZ_VERSION);
-        if(get_option('pizzazz_show_social_share') === false) update_option('pizzazz_show_social_share', false);
+        if (get_option('pizzazz_show_social_share') === false) update_option('pizzazz_show_social_share', false);
+        if (get_option('pizzazz_show_custom_fields') === false) update_option('pizzazz_show_custom_fields', true);
     }
 
     public function deactivate()

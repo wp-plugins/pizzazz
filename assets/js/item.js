@@ -9,4 +9,5 @@ jQuery(document).ready(function($) {
         }
         $('#posts-filter').submit();
     });
+
 });

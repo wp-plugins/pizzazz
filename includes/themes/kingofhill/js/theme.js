@@ -59,7 +59,6 @@ jQuery(document).ready(function ($) {
     facebook();
     gplus();
 
-
     window.setCustomFieldSize();
 
 });
@@ -130,7 +129,6 @@ jQuery(document).ready(function ($) {
     }
 
     var thumbsCount = $('.carousel li').length;
-
 
      if(thumbsCount < thumbs) {
             $('#carouselControlsAbove').hide();

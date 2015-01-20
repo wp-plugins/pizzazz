@@ -160,13 +160,7 @@ class PortfolioItem
             array(&$this, 'displayMetaBox'),
             static::POST_TYPE
        );
-        add_meta_box(
-            'postcustom',
-            __('Custom Fields', 'pizzazz'),
-            'post_custom_meta_box',
-            null,
-            'normal',
-            'core');
+        postmeta\PortfolioItemCustomFields::add();
         postmeta\PortfolioItemVideo::add();
     }
 

@@ -19,8 +19,8 @@ use pizzazz\includes\themebase\classes\FocusImage;
                 <?php $item = $this->_items[0]; ?>
 
                 <?php echo new FocusImage($item, array( 'width' => $this->_baseWidth,
-                    'id' => 'initialImage',
-                    'mobile' => Pizzazz::isMobile()
+                                                        'id' => 'initialImage',
+                                                        'mobile' => Pizzazz::isMobile()
                 )); ?>
 
             </div>
@@ -31,9 +31,9 @@ use pizzazz\includes\themebase\classes\FocusImage;
 
                 <div class="pi-content clearfix">
 
-                    <?php echo apply_filters('the_content', $item->post_content); ?>
+                <?php echo apply_filters('the_content', $item->post_content); ?>
 
-                    <?php include 'custom-fields.php'; ?>
+                <?php include 'custom-fields.php'; ?>
 
                 </div>
 
@@ -62,11 +62,14 @@ use pizzazz\includes\themebase\classes\FocusImage;
 
                             <li>
 
-                                <a href="javascript:updateFocus('pi-focus-<?php echo $key ?>');">
+                                <a href="javascript:updateFocus('pi-focus-<?php echo $key ?>');" class="pi-thumb-link">
 
                                     <img src="<?php echo $item->thumbnailPath; ?>"
                                          width="<?php echo $this->_thumbnailWidth; ?>"
                                          height="<?php echo $this->_thumbnailHeight; ?>"
+                                         style="<?php printf('min-width: %spx; min-height: %spx;',
+                                                        $this->_thumbnailWidth,
+                                                        $this->_thumbnailHeight); ?>"
                                          class="pi-thumb"
                                         <?php if (!isset($this->item->thumbnailPath)) printf('alt="%s"',
                                             __('no image available', 'pizzazz')); ?>
@@ -106,7 +109,7 @@ use pizzazz\includes\themebase\classes\FocusImage;
             <div class="pi-focus pie-box">
 
                 <?php echo new FocusImage($item, array( 'width' => $this->_baseWidth,
-                    'mobile' => Pizzazz::isMobile()
+                                                        'mobile' => Pizzazz::isMobile()
                 )); ?>
 
             </div>
@@ -117,9 +120,9 @@ use pizzazz\includes\themebase\classes\FocusImage;
 
                 <div class="pi-content clearfix">
 
-                    <?php echo apply_filters('the_content', $item->post_content); ?>
+                <?php echo apply_filters('the_content', $item->post_content); ?>
 
-                    <?php include 'custom-fields.php'; ?>
+                <?php include 'custom-fields.php'; ?>
 
                 </div>
 

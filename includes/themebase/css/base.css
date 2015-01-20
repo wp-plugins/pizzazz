@@ -70,3 +70,7 @@ div.pz-video-url-exception {
 div.pz-video-url-exception h4 {
     margin-bottom: 10px;
 }
+
+.pi-thumb-link {
+    display: inline-block;
+}
